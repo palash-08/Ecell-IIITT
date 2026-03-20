@@ -1,0 +1,619 @@
+
+> ecelliiitt@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://10.141.145.70:3000
+
+ ✓ Starting...
+ ✓ Ready in 596ms
+ ○ Compiling /admin/events ...
+ ✓ Compiled /admin/events in 2.1s
+ GET /admin/events 200 in 1433ms
+ ○ Compiling /_not-found/page ...
+ ✓ Compiled /_not-found/page in 983ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1020ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 763ms
+ GET /admin/events 200 in 70ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 320ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 236ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 42ms
+ GET /admin/events 200 in 146ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 115ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 240ms
+ GET /admin/events 200 in 71ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 302ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 267ms
+ ✓ Compiled /admin/events/[id]/submissions in 499ms
+ GET /admin/events/69bbd71cf359202af101667d/submissions 200 in 732ms
+ ✓ Compiled / in 473ms
+ GET / 200 in 487ms
+ ○ Compiling /events ...
+ ✓ Compiled /events in 573ms
+ GET /events 200 in 587ms
+ GET /events/69bbd71cf359202af101667d 404 in 23ms
+ GET /events/69bbd71cf359202af101667d 404 in 46ms
+ GET /events 200 in 102ms
+ GET /events/69bbd71cf359202af101667d 404 in 26ms
+ GET /events/69bbd71cf359202af101667d 404 in 43ms
+ GET /events/69bbd71cf359202af101667d 404 in 28ms
+ ✓ Compiled in 39ms
+ GET /events/69bbd71cf359202af101667d 404 in 53ms
+ ○ Compiling /events/[id] ...
+ ✓ Compiled /events/[id] in 578ms
+ GET /events/69bbd71cf359202af101667d 200 in 900ms
+ GET /events/69bbd71cf359202af101667d 200 in 22ms
+ GET /events/69bbd71cf359202af101667d 200 in 47ms
+ GET /events/69bbd71cf359202af101667d 200 in 18ms
+ ✓ Compiled in 44ms
+ GET /events 404 in 71ms
+ GET /events 404 in 107ms
+ GET /events 404 in 76ms
+ GET /events/69bbd71cf359202af101667d 200 in 171ms
+ GET /events 404 in 66ms
+ GET / 200 in 46ms
+ ○ Compiling /events ...
+ ✓ Compiled /events in 654ms
+ GET /events 200 in 670ms
+ GET /events 200 in 20ms
+ GET /events/69bbd71cf359202af101667d 200 in 28ms
+ GET /events 404 in 36ms
+ GET /events 404 in 48ms
+ ✓ Compiled in 31ms
+ GET / 200 in 100ms
+ GET /events 200 in 40ms
+ GET /events/69bbd71cf359202af101667d 200 in 47ms
+ GET /events 200 in 34ms
+ GET /events/69bbd71cf359202af101667d 200 in 32ms
+ ○ Compiling /team ...
+ ✓ Compiled /team in 560ms
+ GET /team 200 in 608ms
+ ○ Compiling /admin ...
+ ✓ Compiled /admin in 602ms
+ GET /admin 200 in 684ms
+ GET /admin/events 200 in 48ms
+ ○ Compiling /admin/team ...
+ ✓ Compiled /admin/team in 563ms
+ GET /admin/team 200 in 577ms
+ GET /admin/team 200 in 40ms
+ ○ Compiling /admin/team/add ...
+ ✓ Compiled /admin/team/add in 548ms
+ GET /admin/team/add 200 in 563ms
+ GET /admin/team 200 in 31ms
+ GET / 200 in 43ms
+ GET /team 200 in 35ms
+ GET /admin 200 in 65ms
+ GET /admin/team 200 in 39ms
+ GET /admin/team/add 200 in 38ms
+ ○ Compiling /admin/alumni ...
+ ✓ Compiled /admin/alumni in 633ms
+ GET /admin/alumni 200 in 646ms
+ GET /admin/alumni 200 in 19ms
+ GET /admin/team/add?type=Alumni 200 in 39ms
+ GET /admin/events 200 in 39ms
+ GET /admin 200 in 40ms
+ GET /admin/team 200 in 40ms
+ ⨯ ./app/page.js:3:1
+Module not found: Can't resolve '@/components/AboutSection/AboutSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m [90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+[0m [90m 6 |[39m[0m
+
+Import map: aliased to relative './components/AboutSection/AboutSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:3:1
+Module not found: Can't resolve '@/components/AboutSection/AboutSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m [90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+[0m [90m 6 |[39m[0m
+
+Import map: aliased to relative './components/AboutSection/AboutSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:3:1
+Module not found: Can't resolve '@/components/AboutSection/AboutSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m [90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+[0m [90m 6 |[39m[0m
+
+Import map: aliased to relative './components/AboutSection/AboutSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:3:1
+Module not found: Can't resolve '@/components/AboutSection/AboutSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m [90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+[0m [90m 6 |[39m[0m
+
+Import map: aliased to relative './components/AboutSection/AboutSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:2:1
+Module not found: Can't resolve '@/components/HeroSection/HeroSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+
+Import map: aliased to relative './components/HeroSection/HeroSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:2:1
+Module not found: Can't resolve '@/components/HeroSection/HeroSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+
+Import map: aliased to relative './components/HeroSection/HeroSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:2:1
+Module not found: Can't resolve '@/components/HeroSection/HeroSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+
+Import map: aliased to relative './components/HeroSection/HeroSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:2:1
+Module not found: Can't resolve '@/components/HeroSection/HeroSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+
+Import map: aliased to relative './components/HeroSection/HeroSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /admin/team 200 in 72ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 20ms
+ ⨯ ./app/page.js:3:1
+Module not found: Can't resolve '@/components/AboutSection/AboutSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m [90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+[0m [90m 6 |[39m[0m
+
+Import map: aliased to relative './components/AboutSection/AboutSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:3:1
+Module not found: Can't resolve '@/components/AboutSection/AboutSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m [90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+[0m [90m 6 |[39m[0m
+
+Import map: aliased to relative './components/AboutSection/AboutSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:3:1
+Module not found: Can't resolve '@/components/AboutSection/AboutSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m [90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+[0m [90m 6 |[39m[0m
+
+Import map: aliased to relative './components/AboutSection/AboutSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:3:1
+Module not found: Can't resolve '@/components/AboutSection/AboutSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m [90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+[0m [90m 6 |[39m[0m
+
+Import map: aliased to relative './components/AboutSection/AboutSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:2:1
+Module not found: Can't resolve '@/components/HeroSection/HeroSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+
+Import map: aliased to relative './components/HeroSection/HeroSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:2:1
+Module not found: Can't resolve '@/components/HeroSection/HeroSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+
+Import map: aliased to relative './components/HeroSection/HeroSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:2:1
+Module not found: Can't resolve '@/components/HeroSection/HeroSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+
+Import map: aliased to relative './components/HeroSection/HeroSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ⨯ ./app/page.js:2:1
+Module not found: Can't resolve '@/components/HeroSection/HeroSection'
+[0m [90m 1 |[39m [32m"use client"[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m [33mHeroSection[39m [36mfrom[39m [32m"@/components/HeroSection/HeroSection"[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 3 |[39m [36mimport[39m [33mAboutSection[39m [36mfrom[39m [32m"@/components/AboutSection/AboutSection"[39m[33m;[39m[0m
+[0m [90m 4 |[39m [36mimport[39m [33mFeaturedEvents[39m [36mfrom[39m [32m"@/components/events/FeaturedEvents"[39m[33m;[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mSponsorsSection[39m [36mfrom[39m [32m"@/components/Sponsors/SponsorsSection"[39m[33m;[39m[0m
+
+Import map: aliased to relative './components/HeroSection/HeroSection' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ✓ Compiled in 914ms
+ ✓ Compiled /admin/team in 23ms
+ GET /admin/team 200 in 111ms
+ GET /admin/team 200 in 196ms
+ GET /admin/team 200 in 122ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 245ms
+ ✓ Compiled /admin/alumni in 64ms
+ GET /admin/alumni 200 in 159ms
+ GET /admin/alumni 200 in 40ms
+ ✓ Compiled /admin/team/add in 37ms
+ GET /admin/team/add?type=Alumni 200 in 92ms
+ GET /admin/alumni 200 in 25ms
+ GET /admin/alumni 200 in 27ms
+ ✓ Compiled / in 39ms
+ GET / 200 in 109ms
+ ○ Compiling /alumni ...
+ ✓ Compiled /alumni in 897ms
+ GET /alumni 200 in 912ms
+ GET /alumni 200 in 19ms
+ ✓ Compiled /team in 46ms
+ GET /team 200 in 134ms
+ GET /alumni 200 in 35ms
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 868ms
+ GET /contact 200 in 882ms
+ ✓ Compiled /admin in 39ms
+ GET /admin 200 in 183ms
+ GET /admin/team 200 in 42ms
+ ✓ Compiled /admin/events in 18ms
+ GET /admin/events 200 in 80ms
+ GET /admin/alumni 200 in 42ms
+ GET /admin/team 200 in 39ms
+ GET /admin/events 200 in 57ms
+ GET /admin/alumni 200 in 20ms
+ ✓ Compiled in 80ms
+ ✓ Compiled in 60ms
+ GET /admin/alumni 200 in 107ms
+ GET /admin/alumni 200 in 30ms
+ ✓ Compiled in 59ms
+ GET /admin/alumni 200 in 79ms
+ GET /admin/alumni 200 in 20ms
+ ○ Compiling /admin/faculty ...
+ ✓ Compiled /admin/faculty in 1051ms
+ GET /admin/faculty 200 in 1075ms
+ GET /admin/faculty 200 in 21ms
+ GET /admin/faculty 200 in 29ms
+ ✓ Compiled /_not-found/page in 21ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 350ms
+ GET /admin/faculty 200 in 149ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 246ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 304ms
+ ○ Compiling /admin/faculty/create ...
+ ✓ Compiled /admin/faculty/create in 822ms
+ GET /admin/faculty/create 200 in 838ms
+ GET /admin/faculty/create 200 in 140ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 293ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 301ms
+ GET /admin/faculty/create 200 in 79ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 316ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 295ms
+ GET /admin/faculty/create 200 in 60ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 305ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 242ms
+ GET /admin/faculty/create 200 in 74ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 325ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 284ms
+ GET /admin/alumni 200 in 21ms
+ GET /admin/faculty 200 in 38ms
+ GET /admin/faculty/create 200 in 35ms
+ GET /admin/faculty/create 200 in 63ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 359ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 268ms
+ GET /admin/faculty/create 200 in 74ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 314ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 309ms
+ GET /admin/faculty/create 200 in 62ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 255ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 277ms
+ GET /admin/faculty 200 in 100ms
+ GET /admin/faculty 200 in 76ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 324ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 272ms
+ GET /admin/faculty 200 in 76ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 305ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 353ms
+ GET /admin/faculty/create 200 in 47ms
+ GET /admin/faculty 200 in 29ms
+ GET /admin/faculty 200 in 74ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 295ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 275ms
+ GET / 200 in 60ms
+ GET /team 200 in 41ms
+ ✓ Compiled /events in 56ms
+ GET /events 200 in 103ms
+ ○ Compiling /about ...
+ ✓ Compiled /about in 901ms
+ GET /about 200 in 970ms
+ GET /about 200 in 70ms
+ GET /admin 200 in 124ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 379ms
+ GET /admin/faculty 200 in 17ms
+ GET /admin/faculty 200 in 66ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 263ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 312ms
+ GET /admin/faculty/create 200 in 62ms
+ GET /admin/faculty/create 200 in 120ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 253ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 275ms
+ GET /admin/faculty 200 in 39ms
+ GET /admin/faculty 200 in 75ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 242ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 274ms
+ GET /admin/faculty 200 in 65ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 210ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 293ms
+ GET /admin/events 200 in 41ms
+ GET /admin/team 200 in 49ms
+ GET / 200 in 45ms
+ GET /team 200 in 30ms
+ GET /alumni 200 in 30ms
+ ✓ Compiled in 53ms
+ GET /events 200 in 40ms
+ GET /about 200 in 40ms
+ GET /contact 200 in 114ms
+ GET /admin 200 in 65ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 241ms
+ GET /admin/alumni 200 in 38ms
+ GET /admin/faculty 200 in 114ms
+ GET /admin/faculty 200 in 137ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 317ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 295ms
+ GET /admin/faculty 200 in 76ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 189ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 267ms
+ GET /admin/faculty 200 in 81ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 319ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 254ms
+ GET /admin/faculty 200 in 77ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 244ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 236ms
+ GET /admin/faculty 200 in 43ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 184ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 282ms
+ GET /admin/faculty 200 in 59ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 199ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 248ms
+ GET /admin/faculty 200 in 62ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 205ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 265ms
+ GET /admin/faculty 200 in 64ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 246ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 272ms
+ GET / 200 in 82ms
+ GET /about 200 in 29ms
+ GET /about 200 in 81ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 234ms
+ GET /admin/faculty/create 200 in 163ms
+ GET /admin/faculty/create 200 in 42ms
+ GET /about 200 in 167ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 376ms
+ GET /admin/faculty 200 in 57ms
+ GET /admin/faculty 200 in 68ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 362ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 315ms
+ GET /admin/faculty/create 200 in 120ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 226ms
+ GET / 200 in 112ms
+ GET /about 200 in 48ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 174ms
+ GET /about 200 in 154ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 409ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 284ms
+ GET /admin/faculty 200 in 88ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 410ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 330ms
+ GET /admin/faculty 200 in 63ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 289ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 321ms
+ GET /admin/faculty 200 in 58ms
+ GET /admin/faculty 200 in 77ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 442ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 264ms
+ GET /admin/faculty 200 in 92ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 386ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 263ms
+ GET /admin/faculty 200 in 80ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 488ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 307ms
+ GET /about 200 in 98ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 227ms
+ GET /admin/faculty 200 in 90ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 374ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 271ms
+ GET /admin/faculty 200 in 66ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 282ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 253ms
+ GET /admin/faculty 200 in 67ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 204ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 258ms
+ GET /about 200 in 103ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 230ms
+ GET /about 200 in 111ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 240ms
+ GET /admin/faculty 200 in 71ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 392ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 254ms
+ GET /admin/faculty 200 in 107ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 333ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 317ms
+ GET /about 200 in 91ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 232ms
+ GET /about 200 in 95ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 233ms
+ GET /about 200 in 89ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 228ms
+ GET /about 200 in 77ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 232ms
+ GET /admin/faculty 200 in 69ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 367ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 294ms
+ GET /admin/faculty 200 in 83ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 315ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 266ms
+ GET /about 200 in 78ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 229ms
+ GET /team 200 in 49ms
+ GET /about 200 in 42ms
+ GET /admin/faculty 200 in 81ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 373ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 292ms
+ GET /admin/faculty 200 in 112ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 349ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 263ms
+ GET /about 200 in 89ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 228ms
+ GET /about 200 in 64ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 242ms
+ GET /about 200 in 100ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 258ms
+ GET /about 200 in 92ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 235ms
+ GET /about 200 in 90ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 235ms
+ GET /admin/faculty 200 in 87ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 399ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 332ms
+ GET /admin/faculty/create 200 in 56ms
+ GET /admin/faculty 200 in 34ms
+ GET /admin/faculty 200 in 47ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 169ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 339ms
+ GET /about 200 in 61ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 222ms
+ GET /events 200 in 41ms
+ GET /team 200 in 38ms
+ GET /alumni 200 in 44ms
+ ○ Compiling /sponsors ...
+ ✓ Compiled /sponsors in 867ms
+ GET /sponsors 200 in 885ms
+ GET /sponsors 200 in 26ms
+ GET /contact 200 in 45ms
+ GET /events 200 in 37ms
+ GET / 200 in 35ms
+ ✓ Compiled /events/[id] in 45ms
+ GET /events/ideathon-2024 200 in 70ms
+ GET /team 200 in 37ms
+ GET /events 200 in 30ms
+ GET /events/69bbd71cf359202af101667d 200 in 43ms
+ GET /events 200 in 44ms
+ GET /events/69bbd71cf359202af101667d 200 in 42ms
+ GET /events 200 in 42ms
+ GET /events/69bbd71cf359202af101667d 200 in 39ms

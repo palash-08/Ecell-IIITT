@@ -1,0 +1,4 @@
+[dotenv@17.3.1] injecting env (2) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ⚙️  override existing env vars with { override: true }
+✅ E-Cell Backend Server running on http://localhost:5001
+✅ Successfully connected to MongoDB.
