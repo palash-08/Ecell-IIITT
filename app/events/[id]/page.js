@@ -31,12 +31,17 @@ export default function EventDetailPage() {
     };
 
     const checkStatus = async () => {
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+      if (!token) return;
+
       setCheckingRegistration(true);
       try {
         const res = await api.get(`/registrations/check/${id}`);
         setIsRegistered(res.data.isRegistered);
       } catch (err) {
-        console.error('Error checking registration status:', err);
+        if (err.response?.status !== 401) {
+          console.error('Error checking registration status:', err);
+        }
       } finally {
         setCheckingRegistration(false);
       }
@@ -249,17 +254,29 @@ export default function EventDetailPage() {
                   View My Submissions
                 </Link>
              </div>
-          ) : event.status === 'Upcoming' ? (
-            <div className="sticky top-24">
-              <RegistrationForm eventId={event._id} schema={event.customFormSchema || []} />
-            </div>
-          ) : (
-            <div className="bg-gray-50 border border-gray-200 rounded-3xl p-8 text-center sticky top-24">
-               <FiClock className="text-gray-300 mx-auto mb-4" size={40} />
-               <h3 className="text-xl font-bold text-gray-400 mb-2">Registrations Closed</h3>
-               <p className="text-gray-500 text-sm">Follow our social media for updates on the next edition!</p>
-            </div>
-          )}
+          ) : (() => {
+            const eventDate = new Date(event.date);
+            eventDate.setHours(0, 0, 0, 0);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const isCompleted = event.status === 'Completed' || eventDate < today;
+            
+            if (!isCompleted) {
+              return (
+                <div className="sticky top-24">
+                  <RegistrationForm eventId={event._id} schema={event.customFormSchema || []} />
+                </div>
+              );
+            } else {
+              return (
+                <div className="bg-gray-50 border border-gray-200 rounded-3xl p-8 text-center sticky top-24 shadow-sm">
+                   <FiClock className="text-gray-300 mx-auto mb-4" size={40} />
+                   <h3 className="text-sm font-black text-gray-400 mb-2 uppercase tracking-widest">Registrations Closed</h3>
+                   <p className="text-gray-500 text-xs font-bold leading-relaxed px-4">This event has already taken place or registrations are closed.</p>
+                </div>
+              );
+            }
+          })()}
         </div>
       </div>
     </div>

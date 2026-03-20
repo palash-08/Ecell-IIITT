@@ -19,12 +19,14 @@ export default function Home() {
 
       {/* Light Gray Background Section */}
       <FeaturedEvents />
+      
+       {/* Gallery Bento Grid Section */}
+      <GalleryPreview />
 
       {/* Black Background / Premium Feel Section */}
       <SponsorsSection />
 
-      {/* Gallery Bento Grid Section */}
-      <GalleryPreview />
+     
     </div>
   );
 }

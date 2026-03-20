@@ -24,7 +24,11 @@ export default function TeamPage() {
     fetchTeam();
   }, []);
 
-  const categories = Array.from(new Set(team.map(m => m.category)));
+  const categories = Array.from(new Set(team.map(m => m.category))).sort((a, b) => {
+    if (a === 'Core Team') return -1;
+    if (b === 'Core Team') return 1;
+    return a.localeCompare(b);
+  });
 
   if (loading) {
     return (

@@ -11,7 +11,7 @@ export default function GalleryPage() {
     const [filter, setFilter] = useState('All');
     const [selectedMedia, setSelectedMedia] = useState(null);
 
-    const categories = ['All', 'Events', 'Workshops', 'Competitions', 'Alumni Meet', 'General'];
+    const categories = ['All', 'Flagship', 'Hackathon', 'Workshop', 'Seminar', 'Other'];
 
     useEffect(() => {
         const fetchGallery = async () => {

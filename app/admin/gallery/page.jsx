@@ -16,7 +16,7 @@ export default function AdminGalleryPage() {
     const [newItem, setNewItem] = useState({
         title: '',
         mediaType: 'image',
-        category: 'General',
+        category: 'Flagship',
         event: '',
         media: null
     });
@@ -78,7 +78,7 @@ export default function AdminGalleryPage() {
 
             await apiMulti.post('/gallery', formData);
             setShowAddModal(false);
-            setNewItem({ title: '', mediaType: 'image', category: 'General', event: '', media: null });
+            setNewItem({ title: '', mediaType: 'image', category: 'Flagship', event: '', media: null });
             fetchGallery();
         } catch (err) {
             setError(err.response?.data?.error || 'Failed to upload media');
@@ -202,11 +202,11 @@ export default function AdminGalleryPage() {
                                             onChange={(e) => setNewItem({ ...newItem, category: e.target.value })}
                                             className="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/20 focus:border-[#FFB800] transition-all font-medium appearance-none"
                                         >
-                                            <option value="General">General</option>
-                                            <option value="Events">Events</option>
-                                            <option value="Workshops">Workshops</option>
-                                            <option value="Competitions">Competitions</option>
-                                            <option value="Alumni Meet">Alumni Meet</option>
+                                            <option value="Flagship">Flagship</option>
+                                            <option value="Hackathon">Hackathon</option>
+                                            <option value="Workshop">Workshop</option>
+                                            <option value="Seminar">Seminar</option>
+                                            <option value="Other">Other</option>
                                         </select>
                                     </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -74,14 +74,13 @@ export default function AdminTeamPage() {
               <tr className="bg-gray-50 border-b border-gray-200">
                 <th className="px-6 py-4 text-sm font-bold text-gray-500 uppercase tracking-wider">Member Details</th>
                 <th className="px-6 py-4 text-sm font-bold text-gray-500 uppercase tracking-wider">Role & Category</th>
-                <th className="px-6 py-4 text-sm font-bold text-gray-500 uppercase tracking-wider">Status</th>
                 <th className="px-6 py-4 text-sm font-bold text-gray-500 uppercase tracking-wider text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {team.length === 0 ? (
                 <tr>
-                  <td colSpan="4" className="px-6 py-10 text-center text-gray-400 font-medium">No team members found.</td>
+                  <td colSpan="3" className="px-6 py-10 text-center text-gray-400 font-medium">No team members found.</td>
                 </tr>
               ) : team.map((member) => (
                 <tr key={member._id} className="hover:bg-gray-50 transition-colors group">
@@ -107,14 +106,7 @@ export default function AdminTeamPage() {
                     <p className="font-bold text-gray-800">{member.role}</p>
                     <p className="text-sm font-medium text-gray-500 mt-1">{member.category}</p>
                   </td>
-                  <td className="px-6 py-5">
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
-                      member.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
-                    }`}>
-                      <span className={`w-1.5 h-1.5 rounded-full ${member.active ? 'bg-green-500' : 'bg-gray-400'}`}></span>
-                      {member.active ? 'Active' : 'Inactive'}
-                    </span>
-                  </td>
+
                   <td className="px-1 py-5 text-right">
                     <div className="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
                       <Link 

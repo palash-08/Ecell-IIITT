@@ -135,12 +135,23 @@ export default function AdminEventsPage() {
                       </div>
                     </td>
                     <td className="px-6 py-5">
-                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
-                        event.status === 'Upcoming' ? 'bg-amber-50 text-amber-600 border border-amber-100' : 'bg-green-50 text-green-600 border border-green-100'
-                      }`}>
-                        <span className={`w-1.5 h-1.5 rounded-full ${event.status === 'Upcoming' ? 'bg-amber-400' : 'bg-green-500'}`}></span>
-                        {event.status}
-                      </span>
+                      {(() => {
+                        const eventDate = new Date(event.date);
+                        eventDate.setHours(0, 0, 0, 0);
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+                        const isCompleted = event.status === 'Completed' || eventDate < today;
+                        const displayStatus = isCompleted ? 'Completed' : 'Upcoming';
+                        
+                        return (
+                          <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
+                            !isCompleted ? 'bg-amber-50 text-amber-600 border border-amber-100' : 'bg-green-50 text-green-600 border border-green-100'
+                          }`}>
+                            <span className={`w-1.5 h-1.5 rounded-full ${!isCompleted ? 'bg-amber-400' : 'bg-green-500'}`}></span>
+                            {displayStatus}
+                          </span>
+                        );
+                      })()}
                     </td>
                     <td className="px-6 py-5 text-right">
                       <div className="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">

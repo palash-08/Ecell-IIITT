@@ -41,6 +41,7 @@ const Navbar = () => {
               src="/Ecelllogo.jpeg"
               alt="E-Cell IIIT Trichy"
               fill
+              sizes="40px"
               className="object-cover"
             />
           </div>

@@ -158,8 +158,11 @@ export default function EditFacultyPage() {
               <input type="url" value={formData.linkedin} onChange={(e) => setFormData({...formData, linkedin: e.target.value})} placeholder="https://linkedin.com/in/..." className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 transition-all font-bold text-black" />
             </div>
             <div className="md:col-span-2">
-              <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Advisor's Message</label>
-              <textarea rows={6} required value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-3xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 transition-all font-bold text-black resize-none" />
+              <div className="flex justify-between items-center mb-3">
+                <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest">Advisor's Message</label>
+                <span className="text-[10px] font-bold text-gray-400">{(formData.message || '').length}/1000</span>
+              </div>
+              <textarea rows={6} required value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-3xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 transition-all font-bold text-black resize-none" maxLength={1000} />
             </div>
           </div>
           <div className="flex gap-4">

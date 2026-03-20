@@ -40,7 +40,7 @@ const Footer = () => {
           <ul className="space-y-2 text-gray-400 text-sm">
             <li>
               <Link
-                href="/About"
+                href="/about"
                 className="hover:text-white transition-colors"
               >
                 About
@@ -84,12 +84,7 @@ const Footer = () => {
             Follow Us
           </h4>
           <div className="flex gap-4">
-            <a
-              href="#"
-              className="bg-white/10 hover:bg-[#FFB800] hover:text-black p-3 rounded-full transition-all duration-300"
-            >
-              <FaFacebook />
-            </a>
+           
             <a
               href="#"
               className="bg-white/10 hover:bg-[#FFB800] hover:text-black p-3 rounded-full transition-all duration-300"
@@ -102,12 +97,7 @@ const Footer = () => {
             >
               <FaInstagram />
             </a>
-            <a
-              href="#"
-              className="bg-white/10 hover:bg-[#FFB800] hover:text-black p-3 rounded-full transition-all duration-300"
-            >
-              <FaLinkedin />
-            </a>
+           
           </div>
         </div>
       </div>

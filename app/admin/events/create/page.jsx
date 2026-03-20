@@ -191,7 +191,7 @@ export default function CreateEventPage() {
       formData.append('highlights', JSON.stringify(filteredHighlights));
 
       // Filter and append external links
-      const filteredLinks = eventDetails.externalLinks.filter(l => l.url && l.url.trim());
+      const filteredLinks = eventDetails.externalLinks.filter(l => l.label && l.label.trim() && l.url && l.url.trim());
       formData.append('externalLinks', JSON.stringify(filteredLinks));
 
       await apiMulti.post('/events', formData);
@@ -277,12 +277,16 @@ export default function CreateEventPage() {
             <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Event Title</label>
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="block text-sm font-bold text-gray-700 uppercase tracking-wider">Event Title</label>
+                    <span className="text-[10px] font-bold text-gray-400">{eventDetails.title.length}/200</span>
+                  </div>
                   <input 
                     type="text" 
                     value={eventDetails.title}
                     onChange={(e) => setEventDetails({...eventDetails, title: e.target.value})}
                     placeholder="e.g. Global Entrepreneurship Summit" 
+                    maxLength={200}
                     className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 focus:border-[#FFB800] transition-all font-medium text-black"
                   required />
                 </div>
@@ -330,22 +334,30 @@ export default function CreateEventPage() {
                   </select>
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Venue / Platform</label>
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="block text-sm font-bold text-gray-700 uppercase tracking-wider">Venue / Platform</label>
+                    <span className="text-[10px] font-bold text-gray-400">{eventDetails.venue.length}/200</span>
+                  </div>
                   <input 
                     type="text" 
                     value={eventDetails.venue}
                     onChange={(e) => setEventDetails({...eventDetails, venue: e.target.value})}
                     placeholder="e.g. Auditorium / G-Meet Link" 
+                    maxLength={200}
                     className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 focus:border-[#FFB800] transition-all font-medium text-black"
                   required />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Description</label>
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="block text-sm font-bold text-gray-700 uppercase tracking-wider">Description</label>
+                    <span className="text-[10px] font-bold text-gray-400">{eventDetails.description.length}/1000</span>
+                  </div>
                   <textarea 
                     rows={6} 
                     value={eventDetails.description}
                     onChange={(e) => setEventDetails({...eventDetails, description: e.target.value})}
                     placeholder="Describe the event, prizes, and schedule..." 
+                    maxLength={1000}
                     className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 focus:border-[#FFB800] transition-all font-medium text-black resize-none"
                   required></textarea>
                 </div>
@@ -628,7 +640,7 @@ export default function CreateEventPage() {
                         <FiTrash2 size={12} />
                       </button>
                       <div className="flex-1 w-full">
-                        <label className="block text-[10px] font-bold text-gray-400 mb-1 uppercase tracking-wider">Link Label</label>
+                        <label className="block text-[10px] font-bold text-gray-400 mb-1 uppercase tracking-wider">Link Label <span className="text-red-500">*</span></label>
                         <input 
                           type="text" 
                           value={link.label}
@@ -638,7 +650,7 @@ export default function CreateEventPage() {
                         />
                       </div>
                       <div className="flex-[2] w-full">
-                        <label className="block text-[10px] font-bold text-gray-400 mb-1 uppercase tracking-wider">URL</label>
+                        <label className="block text-[10px] font-bold text-gray-400 mb-1 uppercase tracking-wider">URL <span className="text-red-500">*</span></label>
                         <input 
                           type="url" 
                           value={link.url}

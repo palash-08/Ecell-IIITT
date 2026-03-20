@@ -240,7 +240,7 @@ export default function EditEventPage() {
       const filteredHighlights = eventDetails.highlights.filter(h => h.label.trim() && h.value.trim());
       formData.append('highlights', JSON.stringify(filteredHighlights));
 
-      const filteredLinks = eventDetails.externalLinks.filter(l => l.url && l.url.trim());
+      const filteredLinks = eventDetails.externalLinks.filter(l => l.label && l.label.trim() && l.url && l.url.trim());
       formData.append('externalLinks', JSON.stringify(filteredLinks));
 
       await apiMulti.put(`/events/${id}`, formData);
@@ -315,8 +315,11 @@ export default function EditEventPage() {
             <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Event Title</label>
-                  <input type="text" value={eventDetails.title} onChange={(e) => setEventDetails({...eventDetails, title: e.target.value})} className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50" />
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="block text-sm font-bold text-gray-700 uppercase tracking-wider">Event Title</label>
+                    <span className="text-[10px] font-bold text-gray-400">{(eventDetails.title || '').length}/200</span>
+                  </div>
+                  <input type="text" value={eventDetails.title} onChange={(e) => setEventDetails({...eventDetails, title: e.target.value})} maxLength={200} className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50" />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Date</label>
@@ -339,12 +342,18 @@ export default function EditEventPage() {
                   </select>
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Venue / Platform</label>
-                  <input type="text" value={eventDetails.venue} onChange={(e) => setEventDetails({...eventDetails, venue: e.target.value})} className="w-full px-4 py-3 border border-gray-200 rounded-xl" />
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="block text-sm font-bold text-gray-700 uppercase tracking-wider">Venue / Platform</label>
+                    <span className="text-[10px] font-bold text-gray-400">{(eventDetails.venue || '').length}/200</span>
+                  </div>
+                  <input type="text" value={eventDetails.venue} onChange={(e) => setEventDetails({...eventDetails, venue: e.target.value})} maxLength={200} className="w-full px-4 py-3 border border-gray-200 rounded-xl" />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Description</label>
-                  <textarea rows={6} value={eventDetails.description} onChange={(e) => setEventDetails({...eventDetails, description: e.target.value})} className="w-full px-4 py-3 border border-gray-200 rounded-xl resize-none"></textarea>
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="block text-sm font-bold text-gray-700 uppercase tracking-wider">Description</label>
+                    <span className="text-[10px] font-bold text-gray-400">{(eventDetails.description || '').length}/1000</span>
+                  </div>
+                  <textarea rows={6} value={eventDetails.description} onChange={(e) => setEventDetails({...eventDetails, description: e.target.value})} maxLength={1000} className="w-full px-4 py-3 border border-gray-200 rounded-xl resize-none"></textarea>
                 </div>
               </div>
             </div>
@@ -451,8 +460,14 @@ export default function EditEventPage() {
                    {eventDetails.externalLinks.map((l, i) => (
                      <div key={i} className="flex gap-4 items-end bg-gray-50 p-4 rounded-xl relative group">
                         <button onClick={() => removeExternalLink(i)} className="absolute top-2 right-2 text-gray-300 hover:text-red-500 opacity-0 group-hover:opacity-100"><FiTrash2 size={14} /></button>
-                        <input type="text" value={l.label} onChange={(e) => updateExternalLink(i, { label: e.target.value })} placeholder="Label" className="flex-1 bg-transparent border-b border-gray-200 text-xs font-bold" />
-                        <input type="url" value={l.url} onChange={(e) => updateExternalLink(i, { url: e.target.value })} placeholder="URL" className="flex-[2] bg-transparent border-b border-gray-200 text-xs" />
+                        <div className="flex-1">
+                           <label className="block text-[10px] font-bold text-gray-400 mb-1 uppercase tracking-wider">Label <span className="text-red-500">*</span></label>
+                           <input type="text" value={l.label} onChange={(e) => updateExternalLink(i, { label: e.target.value })} placeholder="Label" className="w-full bg-transparent border-b border-gray-200 text-xs font-bold" />
+                        </div>
+                        <div className="flex-[2]">
+                           <label className="block text-[10px] font-bold text-gray-400 mb-1 uppercase tracking-wider">URL <span className="text-red-500">*</span></label>
+                           <input type="url" value={l.url} onChange={(e) => updateExternalLink(i, { url: e.target.value })} placeholder="URL" className="w-full bg-transparent border-b border-gray-200 text-xs" />
+                        </div>
                      </div>
                    ))}
                  </div>

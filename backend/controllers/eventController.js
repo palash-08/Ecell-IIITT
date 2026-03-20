@@ -53,6 +53,8 @@ exports.createEvent = async (req, res) => {
             eventData.externalLinks = JSON.parse(eventData.externalLinks);
         }
 
+        console.log('Final EventData for Create:', JSON.stringify(eventData, null, 2));
+
         const event = await Event.create(eventData);
         res.status(201).json({ success: true, data: event });
     } catch (error) {
@@ -68,9 +70,11 @@ exports.updateEvent = async (req, res) => {
         let eventData = { ...req.body };
 
         // Parse JSON strings from multipart/form-data
-        if (eventData.customFormSchema) eventData.customFormSchema = JSON.parse(eventData.customFormSchema);
-        if (eventData.highlights) eventData.highlights = JSON.parse(eventData.highlights);
-        if (eventData.externalLinks) eventData.externalLinks = JSON.parse(eventData.externalLinks);
+        if (typeof eventData.customFormSchema === 'string') eventData.customFormSchema = JSON.parse(eventData.customFormSchema);
+        if (typeof eventData.highlights === 'string') eventData.highlights = JSON.parse(eventData.highlights);
+        if (typeof eventData.externalLinks === 'string') eventData.externalLinks = JSON.parse(eventData.externalLinks);
+
+        console.log('Final EventData for Update:', JSON.stringify(eventData, null, 2));
 
         // Handle Gallery Images: merge existing paths with new uploads
         let galleryToKeep = [];

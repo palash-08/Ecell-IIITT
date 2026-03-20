@@ -183,6 +183,11 @@ export default function AddTeamMemberPage() {
                         onChange={(e) => setMemberData({...memberData, batch: e.target.value})}
                         placeholder="e.g. 2022" 
                         className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50 outline-none font-medium"
+                        onInput={(e) => {
+                    e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                  }}
+                  maxLength={4}
+                  minLength={4}
                       />
                     </div>
                   </div>
