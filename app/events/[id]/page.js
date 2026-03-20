@@ -2,11 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { FiCalendar, FiMapPin, FiArrowLeft, FiTag, FiClock, FiFileText, FiImage, FiGrid, FiLink, FiArrowUpRight, FiPlay, FiCheckCircle } from 'react-icons/fi';
+import { FiFileText, FiImage, FiClock, FiCheckCircle } from 'react-icons/fi';
 import RegistrationForm from '@/components/events/RegistrationForm';
 import BentoGallery from '@/components/gallery/BentoGallery';
 import Link from 'next/link';
 import api from '@/lib/api';
+
+// Import local components
+import EventDetailHeader from '@/components/events/EventDetailHeader';
+import EventHighlightsSection from '@/components/events/EventHighlightsSection';
+import EventResourcesSection from '@/components/events/EventResourcesSection';
 
 export default function EventDetailPage() {
   const params = useParams();
@@ -77,7 +82,7 @@ export default function EventDetailPage() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] p-6 text-center">
         <h2 className="text-3xl font-black text-black mb-4">Event Not Found</h2>
-        <Link href="/events" className="text-[#FFB800] font-bold hover:underline">Back to all events</Link>
+        <Link href="/events" className="text-[#FFB800] font-bold hover:underline no-underline">Back to all events</Link>
       </div>
     );
   }
@@ -87,56 +92,7 @@ export default function EventDetailPage() {
   return (
     <div className="min-h-screen bg-white pt-[80px]">
       
-      {/* Dynamic Header */}
-      <div className="bg-black py-24 px-6 relative">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <Link href="/events" className="flex items-center gap-2 text-gray-400 font-bold hover:text-white transition-colors mb-8 no-underline">
-            <FiArrowLeft /> Back to Events
-          </Link>
-          <div className="flex flex-col md:flex-row gap-12 items-start">
-            <div className="w-full md:w-1/3 aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-              <img 
-                src={event.mainImage ? `${API_URL}${event.mainImage}` : '/Ecelllogo.jpeg'} 
-                alt={event.title} 
-                className="w-full h-full object-cover" 
-              />
-            </div>
-            <div className="flex-1">
-              <span className="px-4 py-1.5 bg-[#FFB800] text-black text-xs font-black rounded-full shadow-xl uppercase tracking-widest mb-6 inline-block">
-                {event.category}
-              </span>
-              <h1 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">{event.title}</h1>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-2xl">
-                  <div className="w-12 h-12 bg-[#FFB800]/20 rounded-xl flex items-center justify-center text-[#FFB800]">
-                    <FiCalendar size={20} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Date & Time</p>
-                    <p className="text-white font-bold">
-                      {new Date(event.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
-                    </p>
-                    {(event.startTime || event.endTime) && (
-                      <p className="text-gray-400 text-xs font-bold mt-1">
-                        {event.startTime} {event.endTime && `- ${event.endTime}`}
-                      </p>
-                    )}
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-2xl">
-                  <div className="w-12 h-12 bg-[#FFB800]/20 rounded-xl flex items-center justify-center text-[#FFB800]">
-                    <FiMapPin size={20} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Venue</p>
-                    <p className="text-white font-bold">{event.venue}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <EventDetailHeader event={event} />
 
       <div className="max-w-7xl mx-auto px-6 py-20 flex flex-col lg:flex-row gap-20">
         {/* Main Content */}
@@ -150,22 +106,7 @@ export default function EventDetailPage() {
             </div>
           </section>
 
-          {/* Highlights Section */}
-          {event.highlights && event.highlights.length > 0 && (
-            <section className="mb-16">
-              <h3 className="text-2xl font-black text-black mb-8 flex items-center gap-3">
-                <FiGrid className="text-[#FFB800] shadow-sm" /> Event Highlights
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {event.highlights.map((h, i) => (
-                  <div key={i} className="bg-gray-50 border border-gray-100 p-6 rounded-2xl hover:border-[#FFB800]/30 transition-all group">
-                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1 group-hover:text-[#FFB800] transition-colors">{h.label}</p>
-                    <p className="text-xl font-black text-black">{h.value}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
+          <EventHighlightsSection highlights={event.highlights} />
 
           {/* Media Gallery Section */}
           {galleryItems && galleryItems.length > 0 && (
@@ -211,31 +152,7 @@ export default function EventDetailPage() {
             </section>
           )}
 
-          {/* External Links Section */}
-          {event.externalLinks && event.externalLinks.length > 0 && (
-            <section className="mb-16">
-              <h3 className="text-2xl font-black text-black mb-8 flex items-center gap-3">
-                <FiLink className="text-[#FFB800]" /> Useful Resources
-              </h3>
-              <div className="flex flex-wrap gap-4">
-                {event.externalLinks.map((link, i) => (
-                  <a 
-                    key={i} 
-                    href={link.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl hover:border-[#FFB800] hover:bg-[#FFB800]/5 transition-all group"
-                  >
-                    <div className="p-2 bg-white rounded-lg shadow-sm group-hover:bg-[#FFB800] group-hover:text-black transition-colors">
-                      <FiLink size={18} />
-                    </div>
-                    <span className="font-bold text-gray-700">{link.label}</span>
-                    <FiArrowUpRight className="text-gray-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </a>
-                ))}
-              </div>
-            </section>
-          )}
+          <EventResourcesSection links={event.externalLinks} />
         </div>
 
         {/* Form Sidebar */}
@@ -249,7 +166,7 @@ export default function EventDetailPage() {
                 <p className="text-gray-600 font-medium mb-8">You've successfully signed up for this event. Check your registrations for details.</p>
                 <Link 
                   href="/my-registrations"
-                  className="inline-block w-full bg-black text-white font-black py-4 rounded-2xl shadow-xl hover:bg-[#FFB800] hover:text-black transition-all uppercase tracking-widest text-sm"
+                  className="inline-block w-full bg-black text-white font-black py-4 rounded-2xl shadow-xl hover:bg-[#FFB800] hover:text-black transition-all uppercase tracking-widest text-sm no-underline"
                 >
                   View My Submissions
                 </Link>

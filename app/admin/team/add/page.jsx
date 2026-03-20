@@ -1,10 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { FiArrowLeft, FiSave, FiUpload, FiUser, FiCheckCircle } from 'react-icons/fi';
-import Link from 'next/link';
+import React, { useState } from 'react';
+import { FiArrowLeft, FiSave, FiCheckCircle } from 'react-icons/fi';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { apiMulti } from '@/lib/api';
+
+// Import local components
+import MemberBasicInfo from '@/components/admin/team/MemberBasicInfo';
+import MemberProfessionalInfo from '@/components/admin/team/MemberProfessionalInfo';
+import MemberImageUpload from '@/components/admin/team/MemberImageUpload';
 
 export default function AddTeamMemberPage() {
   const router = useRouter();
@@ -33,16 +37,16 @@ export default function AddTeamMemberPage() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setMemberData({
-        ...memberData,
+      setMemberData(prev => ({
+        ...prev,
         image: file,
         imagePreview: URL.createObjectURL(file)
-      });
+      }));
     }
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     setLoading(true);
     setErrors({});
 
@@ -104,7 +108,7 @@ export default function AddTeamMemberPage() {
       <div className="mb-8">
         <button 
           onClick={() => router.back()} 
-          className="flex items-center gap-2 text-gray-500 font-bold hover:text-black transition-colors mb-4"
+          className="flex items-center gap-2 text-gray-500 font-bold hover:text-black transition-colors mb-4 focus:outline-none"
         >
           <FiArrowLeft />
           Back
@@ -127,135 +131,23 @@ export default function AddTeamMemberPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-20">
-        <div className="md:col-span-2">
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm space-y-6">
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Full Name *</label>
-                  <input 
-                    type="text" 
-                    value={memberData.name}
-                    onChange={(e) => setMemberData({...memberData, name: e.target.value})}
-                    placeholder="e.g. Ananya Sharma" 
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50 outline-none font-medium"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Role *</label>
-                    <input 
-                      type="text" 
-                      value={memberData.role}
-                      onChange={(e) => setMemberData({...memberData, role: e.target.value})}
-                      placeholder="e.g. President" 
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50 outline-none font-medium"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Category *</label>
-                    <select 
-                      value={memberData.category}
-                      onChange={(e) => setMemberData({...memberData, category: e.target.value})}
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50 outline-none font-medium"
-                    >
-                      {categories.map(c => <option key={c} value={c}>{c}</option>)}
-                    </select>
-                  </div>
-                </div>
-
-                {memberData.category === 'Alumni' && (
-                  <div className="grid grid-cols-2 gap-4 animate-in slide-in-from-top-2 duration-300">
-                    <div>
-                      <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Current Company</label>
-                      <input 
-                        type="text" 
-                        value={memberData.company}
-                        onChange={(e) => setMemberData({...memberData, company: e.target.value})}
-                        placeholder="e.g. Google" 
-                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50 outline-none font-medium"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Batch (Year)</label>
-                      <input 
-                        type="text" 
-                        value={memberData.batch}
-                        onChange={(e) => setMemberData({...memberData, batch: e.target.value})}
-                        placeholder="e.g. 2022" 
-                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50 outline-none font-medium"
-                        onInput={(e) => {
-                    e.target.value = e.target.value.replace(/[^0-9]/g, "");
-                  }}
-                  maxLength={4}
-                  minLength={4}
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {memberData.category === 'Alumni' && (
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Former Position in E-Cell</label>
-                    <input 
-                      type="text" 
-                      value={memberData.formerPosition}
-                      onChange={(e) => setMemberData({...memberData, formerPosition: e.target.value})}
-                      placeholder="e.g. Technical Lead" 
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50 outline-none font-medium"
-                    />
-                  </div>
-                )}
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">LinkedIn URL</label>
-                    <input 
-                      type="url" 
-                      value={memberData.linkedin}
-                      onChange={(e) => setMemberData({...memberData, linkedin: e.target.value})}
-                      placeholder="https://linkedin.com/..." 
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50 outline-none font-medium"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Email Address *</label>
-                    <input 
-                      type="email" 
-                      value={memberData.email}
-                      onChange={(e) => setMemberData({...memberData, email: e.target.value})}
-                      placeholder="name@example.com" 
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50 outline-none font-medium"
-                    />
-                  </div>
-                </div>
-            </div>
+        <div className="md:col-span-2 space-y-6">
+          <MemberBasicInfo 
+            memberData={memberData} 
+            setMemberData={setMemberData} 
+            categories={categories} 
+          />
+          <MemberProfessionalInfo 
+            memberData={memberData} 
+            setMemberData={setMemberData} 
+          />
         </div>
 
         <div>
-            <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm text-center">
-                <label className="block text-sm font-bold text-gray-700 mb-4 uppercase tracking-wider">Profile Picture</label>
-                <div 
-                  onClick={() => document.getElementById('profile-upload').click()}
-                  className="w-32 h-32 rounded-full border-2 border-dashed border-gray-200 mx-auto flex items-center justify-center cursor-pointer hover:border-[#FFB800] transition-all overflow-hidden relative group"
-                >
-                    {memberData.imagePreview ? (
-                      <img src={memberData.imagePreview} alt="Preview" className="w-full h-full object-cover" />
-                    ) : (
-                      <FiUser size={40} className="text-gray-300" />
-                    )}
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <FiUpload className="text-white" size={24} />
-                    </div>
-                </div>
-                <p className="text-xs text-gray-400 mt-4 font-medium">Click to upload photo<br/>(Max 5MB)</p>
-                <input 
-                  id="profile-upload"
-                  type="file" 
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  className="hidden" 
-                />
-            </div>
+           <MemberImageUpload 
+             imagePreview={memberData.imagePreview} 
+             handleImageChange={handleImageChange} 
+           />
         </div>
       </div>
     </div>
