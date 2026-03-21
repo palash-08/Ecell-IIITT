@@ -37,11 +37,21 @@ export default function AddTeamMemberPage() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        setErrors(prev => ({ ...prev, submit: 'Image size exceeds 5MB limit' }));
+        e.target.value = '';
+        return;
+      }
       setMemberData(prev => ({
         ...prev,
         image: file,
         imagePreview: URL.createObjectURL(file)
       }));
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors.submit;
+        return newErrors;
+      });
     }
   };
 

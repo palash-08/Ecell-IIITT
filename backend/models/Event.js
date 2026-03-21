@@ -18,7 +18,11 @@ const EventSchema = new mongoose.Schema({
         enum: ['Upcoming', 'Completed']
     },
     mainImage: { type: String },
-    galleryImages: [{ type: String }],
+    mainImageSize: { type: Number },
+    galleryImages: [{
+        url: { type: String, required: true },
+        size: { type: Number, required: true }
+    }],
     
     // Dynamic Registration Form schema stored as an array of JSON objects
     customFormSchema: [{

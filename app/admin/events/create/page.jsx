@@ -57,16 +57,34 @@ export default function CreateEventPage() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        setErrors(prev => ({ ...prev, submit: 'Main image size exceeds 5MB limit' }));
+        e.target.value = '';
+        return;
+      }
       setEventDetails(prev => ({
         ...prev,
         mainImage: file,
         imagePreview: URL.createObjectURL(file)
       }));
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors.submit;
+        return newErrors;
+      });
     }
   };
 
   const handleGalleryChange = (e) => {
     const files = Array.from(e.target.files);
+    const oversized = files.filter(file => file.size > 5 * 1024 * 1024);
+    
+    if (oversized.length > 0) {
+      setErrors(prev => ({ ...prev, submit: `${oversized.length} file(s) exceed the 5MB limit.` }));
+      e.target.value = '';
+      return;
+    }
+
     if (files.length > 0) {
       const newPreviews = files.map(file => ({
         url: URL.createObjectURL(file),
@@ -77,6 +95,11 @@ export default function CreateEventPage() {
         galleryImages: [...prev.galleryImages, ...files],
         galleryPreviews: [...prev.galleryPreviews, ...newPreviews]
       }));
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors.submit;
+        return newErrors;
+      });
     }
   };
 

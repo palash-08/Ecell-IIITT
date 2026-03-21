@@ -23,16 +23,17 @@ const AboutSection = () => {
           viewport={{ once: true }}
           className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto mb-10 font-medium"
         >
-          E-Cell IIIT Trichy is a student-driven, non-profit organization at the
-          Indian Institute of Information Technology Tiruchirappalli, devoted to
-          fostering innovation and entrepreneurship. With a vision of cultivating
-          a thriving startup culture, we bridge aspiring entrepreneurs with
-          mentors, investors, and industry leaders. Guided by our ethos,{" "}
-          <span className="text-black font-bold">
-            "Catalyzing Reformers"
-          </span>
-          , we host impactful events and initiatives that spark curiosity, build
-          confidence, and inspire students to explore, create, and lead.
+          E-Cell IIIT Trichy is a student-driven initiative founded in September
+          2022, focused on building a strong entrepreneurial ecosystem within
+          the campus. We create opportunities for students to explore
+          entrepreneurship through workshops, competitions, and hands-on
+          experiences — helping them move from ideas to execution. From hosting
+          events like Venture Quest and finance workshops to organizing engaging
+          sessions and competitions, we aim to continuously push students
+          towards innovation and growth. Guided by our ethos,{" "}
+          <span className="text-black font-bold">"Catalyzing Reformers"</span>,
+          we are committed to shaping individuals who can build, lead, and
+          create meaningful impact.
         </motion.p>
 
         <motion.div
@@ -41,7 +42,10 @@ const AboutSection = () => {
           transition={{ delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <Link href="/story" className="inline-block bg-[#1A1A1A] text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-[#FFB800] hover:text-black hover:-translate-y-1 transition-all duration-300 shadow-lg">
+          <Link
+            href="/story"
+            className="inline-block bg-[#1A1A1A] text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-[#FFB800] hover:text-black hover:-translate-y-1 transition-all duration-300 shadow-lg"
+          >
             Read Our Story
           </Link>
         </motion.div>

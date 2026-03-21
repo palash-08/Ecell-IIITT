@@ -8,10 +8,14 @@ const VisionMission = () => {
         <div className="w-20 h-20 bg-[#FFB800] rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
           <FaEye className="text-black text-3xl" />
         </div>
-        <h3 className="text-2xl font-bold text-black mb-4 tracking-tight">Our Vision</h3>
+        <h3 className="text-2xl font-bold text-black mb-4 tracking-tight">
+          Our Vision
+        </h3>
         <p className="text-gray-600 leading-relaxed font-medium">
-          To be the leading entrepreneurship hub that transforms innovative ideas into impactful
-          solutions, creating successful entrepreneurs who contribute to society and the economy.
+          To build a strong entrepreneurial ecosystem at IIIT Trichy by
+          connecting students with the right resources, networks, and
+          opportunities enabling them to explore, start, and grow their own
+          ventures.
         </p>
       </div>
 
@@ -20,11 +24,16 @@ const VisionMission = () => {
         <div className="w-20 h-20 bg-[#FFB800] rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
           <FaRocket className="text-black text-3xl" />
         </div>
-        <h3 className="text-2xl font-bold text-black mb-4 tracking-tight">Our Mission</h3>
+        <h3 className="text-2xl font-bold text-black mb-4 tracking-tight">
+          Our Mission
+        </h3>
         <p className="text-gray-600 leading-relaxed font-medium">
-          To nurture entrepreneurial mindset, provide mentorship and resources, facilitate
-          networking opportunities, and create a supportive ecosystem for startups and innovation
-          at IIIT Trichy.
+          To actively engage students through workshops, competitions, and
+          collaborative initiatives, while building meaningful relationships
+          with individuals and organizations that support entrepreneurship. We
+          aim to identify, guide, and nurture students based on their interests
+          and strengths, helping them create or contribute to impactful
+          ventures.
         </p>
       </div>
     </div>

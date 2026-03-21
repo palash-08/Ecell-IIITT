@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { FiHome, FiCalendar, FiUsers, FiAward, FiLogOut, FiBriefcase, FiMail, FiShield, FiGrid } from "react-icons/fi";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import { useAuth } from "@/context/AuthContext";
+import { Users2 } from "lucide-react";
 
 const AdminLayout = ({ children }) => {
   const pathname = usePathname();
@@ -22,7 +23,7 @@ const AdminLayout = ({ children }) => {
   const { user, logout } = useAuth();
 
   const superAdminItems = [
-    { name: "Manage Admins", href: "/admin/manage-admins", icon: FiShield },
+    { name: "Manage Admins", href: "/admin/manage-admins", icon: Users2 },
   ];
 
   return (

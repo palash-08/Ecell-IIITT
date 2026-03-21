@@ -70,13 +70,16 @@ export default function EditEventPage() {
           mainImage: data.mainImage || null,
           imagePreview: data.mainImage ? `${API_URL}${data.mainImage}` : null,
           galleryImages: [], 
-          existingGallery: data.galleryImages || [],
-          galleryPreviews: (data.galleryImages || []).map(path => ({
-            url: `${API_URL}${path}`,
-            type: path.match(/\.(mp4|webm|ogg|mov)$/i) ? 'video' : 'image',
-            isExisting: true,
-            path: path
-          })),
+          existingGallery: (data.galleryImages || []).map(img => typeof img === 'string' ? img : img.url),
+          galleryPreviews: (data.galleryImages || []).map(img => {
+            const url = typeof img === 'string' ? img : img.url;
+            return {
+              url: `${API_URL}${url}`,
+              type: url.match(/\.(mp4|webm|ogg|mov)$/i) ? 'video' : 'image',
+              isExisting: true,
+              path: url
+            };
+          }),
           highlights: data.highlights || [],
           externalLinks: data.externalLinks || []
         });
@@ -96,16 +99,34 @@ export default function EditEventPage() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        setErrors(prev => ({ ...prev, submit: 'Main image size exceeds 5MB limit' }));
+        e.target.value = '';
+        return;
+      }
       setEventDetails(prev => ({
         ...prev,
         mainImage: file,
         imagePreview: URL.createObjectURL(file)
       }));
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors.submit;
+        return newErrors;
+      });
     }
   };
 
   const handleGalleryChange = (e) => {
     const files = Array.from(e.target.files);
+    const oversized = files.filter(file => file.size > 5 * 1024 * 1024);
+    
+    if (oversized.length > 0) {
+      setErrors(prev => ({ ...prev, submit: `${oversized.length} file(s) exceed the 5MB limit.` }));
+      e.target.value = '';
+      return;
+    }
+
     if (files.length > 0) {
       const newPreviews = files.map(file => ({
         url: URL.createObjectURL(file),
@@ -117,6 +138,11 @@ export default function EditEventPage() {
         galleryImages: [...prev.galleryImages, ...files],
         galleryPreviews: [...prev.galleryPreviews, ...newPreviews]
       }));
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors.submit;
+        return newErrors;
+      });
     }
   };
 

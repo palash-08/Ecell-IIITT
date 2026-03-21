@@ -31,10 +31,12 @@ const EventListTable = ({ events, onDelete }) => {
                         </div>
                       )}
                     </div>
-                    <div>
-                      <p className="font-bold text-black text-base">{event.title}</p>
-                      <p className="text-sm font-medium text-gray-500 mt-0.5">{event.category}</p>
-                    </div>
+                        <div>
+                          <Link href={`/admin/events/${event._id}`} className="font-bold text-black text-base hover:text-[#FFB800] transition-colors no-underline">
+                            {event.title}
+                          </Link>
+                          <p className="text-sm font-medium text-gray-500 mt-0.5">{event.category}</p>
+                        </div>
                   </div>
                 </td>
                 <td className="px-6 py-5">

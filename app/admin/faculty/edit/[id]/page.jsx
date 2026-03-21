@@ -57,11 +57,17 @@ export default function EditFacultyPage() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        setError('Image size exceeds 5MB limit');
+        e.target.value = '';
+        return;
+      }
       setFormData({
         ...formData,
         image: file,
         imagePreview: URL.createObjectURL(file)
       });
+      setError(null);
     }
   };
 

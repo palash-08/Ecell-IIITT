@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import api from '@/lib/api';
 import { FiCalendar, FiMapPin, FiClock, FiFileText, FiX, FiCheckCircle, FiChevronRight, FiGrid } from 'react-icons/fi';
+import Link from 'next/link';
 import ProtectedRoute from '@/components/auth/ProtectedRoute';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -56,7 +57,7 @@ export default function MyRegistrationsPage() {
                 <div className="max-w-4xl mx-auto">
                     <header className="mb-12">
                         <h1 className="text-4xl md:text-6xl font-black text-black mb-4">My <span className="text-[#FFB800]">Registrations.</span></h1>
-                        <p className="text-gray-500 font-medium text-lg italic">View the events you've registered for and your submissions.</p>
+                        <p className="text-gray-500 font-medium text-lg italic">View the events you&apos;ve registered for and your submissions.</p>
                     </header>
 
                     {loading ? (
@@ -67,10 +68,10 @@ export default function MyRegistrationsPage() {
                         <div className="bg-gray-50 border border-gray-100 rounded-[2.5rem] p-12 text-center">
                             <FiCalendar className="mx-auto text-gray-300 mb-6" size={48} />
                             <h3 className="text-2xl font-black text-black mb-2">No Registrations Yet</h3>
-                            <p className="text-gray-500 font-medium mb-8">You haven't registered for any events. Explore our events and join the ecosystem!</p>
-                            <a href="/events" className="inline-block bg-black text-white font-black py-4 px-10 rounded-2xl hover:bg-[#FFB800] hover:text-black transition-all uppercase tracking-widest text-sm shadow-xl">
+                            <p className="text-gray-500 font-medium mb-8">You haven&apos;t registered for any events. Explore our events and join the ecosystem!</p>
+                            <Link href="/events" className="inline-block bg-black text-white font-black py-4 px-10 rounded-2xl hover:bg-[#FFB800] hover:text-black transition-all uppercase tracking-widest text-sm shadow-xl">
                                 Browse Events
-                            </a>
+                            </Link>
                         </div>
                     ) : (
                         <div className="space-y-6">

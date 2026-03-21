@@ -96,7 +96,7 @@ export default function AlumniPage() {
                 <FiSearch size={40} />
               </div>
               <h3 className="text-2xl font-black text-black mb-2 uppercase tracking-tight">No results found</h3>
-              <p className="text-gray-400 font-medium">Try adjusting your search or filters to find what you're looking for.</p>
+              <p className="text-gray-400 font-medium">Try adjusting your search or filters to find what you&apos;re looking for.</p>
               <button 
                 onClick={() => {setSearchTerm(''); setSelectedBatch('All');}}
                 className="mt-8 text-[#FFB800] font-black uppercase tracking-widest text-xs hover:underline"

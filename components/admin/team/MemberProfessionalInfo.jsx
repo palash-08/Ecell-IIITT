@@ -34,12 +34,12 @@ const MemberProfessionalInfo = ({ memberData, setMemberData }) => {
       </div>
 
       <div>
-        <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Former Position in E-Cell</label>
+        <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Current Company Role</label>
         <input 
           type="text" 
-          value={memberData.formerPosition}
-          onChange={(e) => setMemberData({...memberData, formerPosition: e.target.value})}
-          placeholder="e.g. Technical Lead" 
+          value={memberData.role}
+          onChange={(e) => setMemberData({...memberData, role: e.target.value})}
+          placeholder="e.g. Software Engineer" 
           className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50 outline-none font-medium"
         />
       </div>

@@ -18,7 +18,8 @@ const StoryPage = () => {
             Our <span className="text-[#FFB800]">Story</span>
           </h1>
           <p className="text-xl text-gray-600 font-medium">
-            How a small group of dreamers built the entrepreneurship hub of IIIT Trichy.
+            How a group of students took the first step towards building an
+            entrepreneurial culture at IIIT Trichy.
           </p>
         </motion.div>
 
@@ -30,39 +31,62 @@ const StoryPage = () => {
           className="prose prose-lg max-w-none text-gray-700"
         >
           <div className="relative w-full h-[400px] mb-12 rounded-3xl overflow-hidden shadow-xl">
-            <Image 
-              src="/meeting.jpg" 
-              alt="E-Cell Team" 
-              fill 
+            <Image
+              src="/meeting.jpg"
+              alt="E-Cell Team"
+              fill
               className="object-cover"
             />
           </div>
 
           <h2 className="text-3xl font-bold text-black mb-6">The Beginning</h2>
           <p className="mb-8 leading-relaxed">
-            Every great venture starts with a simple question: "What if?" 
-            For E-Cell IIIT Trichy, that question was asked in a small dorm room by a few passionate students who realized that while technical skills were being honed in classrooms, the business acumen required to build real-world solutions was missing. We wanted to bridge the gap between innovation and execution.
+            E-Cell IIIT Trichy began in September 2022 with a simple realization
+            while students were strong technically, there was limited exposure
+            to entrepreneurship and real-world execution. A group of students
+            came together with the idea of building a space where innovation
+            could go beyond classrooms and turn into action. What started as a
+            small initiative quickly grew into a shared vision to create an
+            environment where students could explore ideas, learn, and build.
           </p>
 
-          <h2 className="text-3xl font-bold text-black mb-6">Building the Foundation</h2>
+          <h2 className="text-3xl font-bold text-black mb-6">
+            Building the Foundation
+          </h2>
           <p className="mb-8 leading-relaxed">
-            With the support of our incredible faculty and the administration, E-Cell was officially born. Our initial days were spent convincing peers that entrepreneurship was not just about starting companies, but about adopting a mindset of problem-solving. We started with small ideation workshops and pitch sessions. The response was overwhelming.
+            In its early days, E-Cell focused on building awareness and
+            engagement. Through events like Venture Quest, pitching sessions,
+            workshops on finance and entrepreneurship, and interactive seminars,
+            we began creating opportunities for students to step into the world
+            of startups. Slowly, a community started forming — students who were
+            curious, willing to experiment, and ready to learn beyond the
+            classroom.
           </p>
 
           <div className="my-12 p-8 bg-[#F5F5F5] rounded-3xl border-l-4 border-[#FFB800] relative">
             <FaQuoteLeft className="text-4xl text-[#FFB800]/20 absolute top-6 left-6" />
             <p className="text-2xl font-bold text-black italic relative z-10 pl-8">
-              "We don't just build startups here. We build founders who are resilient enough to build anything."
+              "We’re not just encouraging startups — we’re building a mindset to
+              create, adapt, and lead."
             </p>
           </div>
 
-          <h2 className="text-3xl font-bold text-black mb-6">The Journey Ahead</h2>
+          <h2 className="text-3xl font-bold text-black mb-6">
+            The Journey Ahead
+          </h2>
           <p className="mb-8 leading-relaxed">
-            Today, what started as a small club has transformed into the central nexus for startup culture at IIIT Trichy. We've hosted flagship events like E-Summits, continuous hackathons, and brought in industry leaders to mentor our students. But our story is still being written. We continue to empower students to take risks, fail fast, and build products that matter.
+            Today, E-Cell IIIT Trichy is steadily growing as a platform for
+            entrepreneurial learning and collaboration on campus. With over 10
+            events conducted and 200+ students engaged, we continue to expand
+            our reach and impact. We are working towards building a strong
+            ecosystem — connecting students with opportunities, knowledge, and
+            like-minded peers.Our journey is just beginning, and we aim to take
+            it further with bigger initiatives, stronger networks, and a
+            long-term vision of creating something truly impactful.
           </p>
-          
+
           <p className="text-xl font-bold text-black mt-12 text-center">
-            Join us, and let's write the next chapter together.
+            Be a part of the journey — and help shape what comes next.
           </p>
         </motion.div>
       </div>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiImage, FiVideo, FiMaximize2, FiX, FiCalendar, FiTag } from 'react-icons/fi';
+import Image from 'next/image';
 import api from '@/lib/api';
 
 export default function GalleryPage() {
@@ -106,9 +107,12 @@ export default function GalleryPage() {
                                 onClick={() => setSelectedMedia(item)}
                             >
                                 {item.mediaType === 'image' ? (
-                                    <img 
+                                    <Image 
                                         src={`${API_URL}${item.url}`} 
                                         alt={item.title}
+                                        width={800}
+                                        height={600}
+                                        unoptimized
                                         className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
                                     />
                                 ) : (
@@ -168,9 +172,12 @@ export default function GalleryPage() {
                             
                             <div className="bg-black rounded-[3rem] overflow-hidden flex items-center justify-center aspect-video sm:aspect-auto sm:max-h-[80vh]">
                                 {selectedMedia.mediaType === 'image' ? (
-                                    <img 
+                                    <Image 
                                         src={`${API_URL}${selectedMedia.url}`} 
                                         alt={selectedMedia.title}
+                                        width={1200}
+                                        height={800}
+                                        unoptimized
                                         className="max-w-full max-h-full object-contain"
                                     />
                                 ) : (

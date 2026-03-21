@@ -14,7 +14,6 @@ export default function AdminGalleryPage() {
     const [events, setEvents] = useState([]);
     
     const [newItem, setNewItem] = useState({
-        title: '',
         mediaType: 'image',
         category: 'Flagship',
         event: '',
@@ -58,8 +57,14 @@ export default function AdminGalleryPage() {
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
+            if (file.size > 5 * 1024 * 1024) {
+                setError('File size exceeds 5MB limit');
+                e.target.value = '';
+                return;
+            }
             const mediaType = file.type.startsWith('video') ? 'video' : 'image';
             setNewItem({ ...newItem, media: file, mediaType });
+            setError(null);
         }
     };
 
@@ -69,8 +74,14 @@ export default function AdminGalleryPage() {
         setError(null);
 
         try {
+            let itemTitle = 'General';
+            if (newItem.event) {
+                const selectedEvent = events.find(ev => ev._id === newItem.event);
+                if (selectedEvent) itemTitle = selectedEvent.title;
+            }
+
             const formData = new FormData();
-            formData.append('title', newItem.title);
+            formData.append('title', itemTitle);
             formData.append('mediaType', newItem.mediaType);
             formData.append('category', newItem.category);
             if (newItem.event) formData.append('event', newItem.event);
@@ -78,7 +89,7 @@ export default function AdminGalleryPage() {
 
             await apiMulti.post('/gallery', formData);
             setShowAddModal(false);
-            setNewItem({ title: '', mediaType: 'image', category: 'Flagship', event: '', media: null });
+            setNewItem({ mediaType: 'image', category: 'Flagship', event: '', media: null });
             fetchGallery();
         } catch (err) {
             setError(err.response?.data?.error || 'Failed to upload media');
@@ -182,19 +193,7 @@ export default function AdminGalleryPage() {
                             </div>
                             
                             <form onSubmit={handleSubmit} className="p-8 space-y-6">
-                                <div>
-                                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 block">Media Title</label>
-                                    <input 
-                                        type="text" 
-                                        required
-                                        value={newItem.title}
-                                        onChange={(e) => setNewItem({ ...newItem, title: e.target.value })}
-                                        placeholder="e.g. E-Summit 2024 Day 1"
-                                        className="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/20 focus:border-[#FFB800] transition-all font-medium"
-                                    />
-                                </div>
-                                
-                                <div className="grid grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 block">Category</label>
                                         <select 
@@ -209,7 +208,6 @@ export default function AdminGalleryPage() {
                                             <option value="Other">Other</option>
                                         </select>
                                     </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 block">Link to Event (Optional)</label>
                                         <select 
@@ -223,21 +221,21 @@ export default function AdminGalleryPage() {
                                             ))}
                                         </select>
                                     </div>
-                                    <div>
-                                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 block">Upload File</label>
-                                        <label className="flex items-center gap-3 px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl cursor-pointer hover:bg-gray-100 transition-all font-medium overflow-hidden">
-                                            {newItem.media ? <FiCheckCircle className="text-green-500 shrink-0" /> : <FiUpload className="text-[#FFB800] shrink-0" />}
-                                            <span className="text-gray-500 text-sm truncate">{newItem.media ? newItem.media.name : 'Choose File'}</span>
-                                            <input 
-                                                type="file" 
-                                                required
-                                                onChange={handleFileChange}
-                                                accept="image/*,video/*"
-                                                className="hidden" 
-                                            />
-                                        </label>
-                                    </div>
                                 </div>
+                                
+                                <div>
+                                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 block">Upload File</label>
+                                    <label className="flex items-center gap-3 px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl cursor-pointer hover:bg-gray-100 transition-all font-medium overflow-hidden">
+                                        {newItem.media ? <FiCheckCircle className="text-green-500 shrink-0" /> : <FiUpload className="text-[#FFB800] shrink-0" />}
+                                        <span className="text-gray-500 text-sm truncate">{newItem.media ? newItem.media.name : 'Choose File'}</span>
+                                        <input 
+                                            type="file" 
+                                            required
+                                            onChange={handleFileChange}
+                                            accept="image/*,video/*"
+                                            className="hidden" 
+                                        />
+                                    </label>
                                 </div>
 
                                 {error && <p className="text-red-500 text-xs font-bold bg-red-50 p-3 rounded-lg border border-red-100">{error}</p>}

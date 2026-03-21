@@ -6,6 +6,7 @@ import { FiFileText, FiImage, FiClock, FiCheckCircle } from 'react-icons/fi';
 import RegistrationForm from '@/components/events/RegistrationForm';
 import BentoGallery from '@/components/gallery/BentoGallery';
 import Link from 'next/link';
+import Image from 'next/image';
 import api from '@/lib/api';
 
 // Import local components
@@ -126,12 +127,13 @@ export default function EventDetailPage() {
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {event.galleryImages.map((img, i) => {
-                  const isVideo = img.match(/\.(mp4|webm|ogg|mov)$/i);
+                  const imageUrl = typeof img === 'string' ? img : img.url;
+                  const isVideo = imageUrl.match(/\.(mp4|webm|ogg|mov)$/i);
                   return (
                     <div key={i} className="relative aspect-video rounded-3xl overflow-hidden border border-gray-100 group">
                       {isVideo ? (
                         <video 
-                          src={`${API_URL}${img}`} 
+                          src={`${API_URL}${imageUrl}`} 
                           className="w-full h-full object-cover" 
                           controls
                           muted
@@ -139,9 +141,11 @@ export default function EventDetailPage() {
                           preload="metadata"
                         />
                       ) : (
-                        <img 
-                          src={`${API_URL}${img}`} 
+                        <Image 
+                          src={`${API_URL}${imageUrl}`} 
                           alt="Gallery item" 
+                          fill
+                          unoptimized
                           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
                         />
                       )}
@@ -163,7 +167,7 @@ export default function EventDetailPage() {
                   <FiCheckCircle size={32} />
                 </div>
                 <h3 className="text-2xl font-black text-black mb-4 uppercase tracking-tight">Already <span className="text-green-600">Registered</span></h3>
-                <p className="text-gray-600 font-medium mb-8">You've successfully signed up for this event. Check your registrations for details.</p>
+                <p className="text-gray-600 font-medium mb-8">You&apos;ve successfully signed up for this event. Check your registrations for details.</p>
                 <Link 
                   href="/my-registrations"
                   className="inline-block w-full bg-black text-white font-black py-4 rounded-2xl shadow-xl hover:bg-[#FFB800] hover:text-black transition-all uppercase tracking-widest text-sm no-underline"

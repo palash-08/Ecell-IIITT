@@ -43,7 +43,7 @@ export default function ContactPage() {
           >
             <h1 className="text-5xl md:text-8xl font-black text-white mb-8 leading-tight">Get in <span className="text-[#FFB800]">Touch.</span></h1>
             <p className="text-xl text-gray-400 font-medium mb-12 max-w-lg leading-relaxed">
-              Whether you're a student with an idea or a sponsor looking to collaborate, we're just a message away.
+              Have an idea, a question, or want to collaborate? Reach out to us — we’re always open to connecting, learning, and building together.
             </p>
             
             <div className="space-y-8">
@@ -52,7 +52,7 @@ export default function ContactPage() {
                   <FiMail size={24} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">Email us at</p>
+                  <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">Reach us at</p>
                   <p className="text-white font-bold text-lg">ecell@iiitt.ac.in</p>
                 </div>
               </div>
@@ -61,7 +61,7 @@ export default function ContactPage() {
                   <FiMapPin size={24} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">Our Location</p>
+                  <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">Based in</p>
                   <p className="text-white font-bold text-lg">IIIT Trichy, Sethurappatti, Tamil Nadu</p>
                 </div>
               </div>
@@ -79,7 +79,7 @@ export default function ContactPage() {
                   <FiCheckCircle size={40} />
                 </div>
                 <h2 className="text-3xl font-black text-black mb-4 uppercase tracking-tight">Message Sent!</h2>
-                <p className="text-gray-500 font-medium mb-8 text-lg">Thank you for reaching out. Our team will get back to you shortly.</p>
+                <p className="text-gray-500 font-medium mb-8 text-lg">Thanks for reaching out! Our team will get back to you as soon as possible.</p>
                 <button 
                   onClick={() => setSuccess(false)}
                   className="bg-black text-white px-8 py-3 rounded-xl font-bold hover:bg-[#FFB800] hover:text-black transition-all"
@@ -91,13 +91,13 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Your Name</label>
+                    <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Full Name</label>
                     <input 
                       type="text" 
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      placeholder="e.g. John Doe"
+                      placeholder="e.g.  Rahul Gupta"
                       className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 transition-all font-bold text-black"
                     />
                   </div>
@@ -108,19 +108,19 @@ export default function ContactPage() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      placeholder="e.g. john@example.com"
+                      placeholder="e.g. rahul@example.com"
                       className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 transition-all font-bold text-black"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Your Message</label>
+                  <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Message</label>
                   <textarea 
                     rows={5} 
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    placeholder="How can we help you?"
+                    placeholder="Tell us how we can help or collaborate..."
                     className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 transition-all font-bold text-black resize-none"
                   ></textarea>
                 </div>

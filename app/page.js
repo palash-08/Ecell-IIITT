@@ -2,8 +2,8 @@
 import HeroSection from "@/components/hero-section/HeroSection";
 import AboutSection from "@/components/about-section/AboutSection";
 import FeaturedEvents from "@/components/events/FeaturedEvents";
-import SponsorsSection from "@/components/sponsors/SponsorsSection";
 import GalleryPreview from "@/components/gallery/GalleryPreview";
+import CollaborateSection from "@/components/collaborate/CollaborateSection";
 
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -24,7 +24,7 @@ export default function Home() {
       <GalleryPreview />
 
       {/* Black Background / Premium Feel Section */}
-      <SponsorsSection />
+      <CollaborateSection />
 
      
     </div>

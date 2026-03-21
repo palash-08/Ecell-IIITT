@@ -16,11 +16,17 @@ const MemberBasicInfo = ({ memberData, setMemberData, categories }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">Role *</label>
+          <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wider">E-Cell Position *</label>
           <input 
             type="text" 
-            value={memberData.role}
-            onChange={(e) => setMemberData({...memberData, role: e.target.value})}
+            value={memberData.category === 'Alumni' ? memberData.formerPosition : memberData.role}
+            onChange={(e) => {
+              if (memberData.category === 'Alumni') {
+                setMemberData({...memberData, formerPosition: e.target.value});
+              } else {
+                setMemberData({...memberData, role: e.target.value});
+              }
+            }}
             placeholder="e.g. President" 
             className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FFB800]/50 outline-none font-medium"
           />

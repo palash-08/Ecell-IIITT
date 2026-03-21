@@ -33,7 +33,7 @@ const HeroSection = () => {
         >
           <span className="w-2 h-2 rounded-full bg-[#FFB800] animate-pulse"></span>
           <span className="text-sm font-semibold text-gray-300 tracking-wide uppercase">
-            IIIT Trichy E-Cell
+            Entrepreneurship Cell • IIIT Trichy
           </span>
         </motion.div>
 
@@ -61,7 +61,7 @@ const HeroSection = () => {
             We build the next generation of{" "}
             <span className="text-white font-bold">
               <Typewriter
-                words={["Founders.", "Innovators.", "Visionaries.", "Leaders."]}
+              words={["Founders.", "Innovators.", "Builders.", "Changemakers."]}
                 loop={0}
                 cursor
                 cursorStyle="|"
@@ -79,10 +79,9 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-lg md:text-xl text-gray-500 font-medium max-w-2xl mx-auto mb-12 leading-relaxed"
         >
-          A passionate student body dedicated to promoting the spirit of
-          entrepreneurship. Join a community of dreamers ready to build
-          something that matters.
-        </motion.p>
+          Building a thriving entrepreneurial ecosystem at IIIT Trichy. 
+We empower students through competitions, workshops, and real-world exposure to transform ideas into impactful ventures.
+  </motion.p>
 
         {/* CTA Buttons */}
         <motion.div

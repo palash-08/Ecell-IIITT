@@ -4,7 +4,7 @@ const TeamMember = require('../models/TeamMember');
 // @route   GET /api/team
 exports.getTeamMembers = async (req, res) => {
     try {
-        const team = await TeamMember.find().sort({ createdAt: -1 });
+        const team = await TeamMember.find().sort({ createdAt: 1 });
         res.status(200).json({ success: true, count: team.length, data: team });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });

@@ -25,8 +25,9 @@ const Navbar = () => {
     { name: "Gallery", href: "/gallery" },
     { name: "Team", href: "/team" },
     { name: "Alumni", href: "/alumni" },
-    { name: "Sponsors", href: "/sponsors" },
     { name: "Contact", href: "/contact" },
+        { name: "Collaborate With Us", href: "/collaborate" },
+
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
