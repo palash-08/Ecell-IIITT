@@ -1,6 +1,8 @@
 const Faculty = require('../models/Faculty');
 const fs = require('fs');
 const path = require('path');
+const logger = require('../utils/logger');
+
 
 // @desc    Get all faculty
 // @route   GET /api/faculty
@@ -45,8 +47,10 @@ exports.createFaculty = async (req, res) => {
     }
 
     const faculty = await Faculty.create(facultyData);
+    logger.info(`✅ Successfully created faculty: ${faculty.name || faculty._id}`);
     res.status(201).json({ success: true, data: faculty });
   } catch (err) {
+    logger.error(`❌ Failed to create faculty: ${err.message}`);
     res.status(400).json({ success: false, error: err.message });
   }
 };
@@ -79,8 +83,10 @@ exports.updateFaculty = async (req, res) => {
       return res.status(404).json({ success: false, error: 'Faculty not found' });
     }
 
+    logger.info(`✅ Successfully updated faculty: ${faculty.name || faculty._id}`);
     res.status(200).json({ success: true, data: faculty });
   } catch (err) {
+    logger.error(`❌ Failed to update faculty ${req.params.id}: ${err.message}`);
     res.status(400).json({ success: false, error: err.message });
   }
 };
@@ -104,8 +110,10 @@ exports.deleteFaculty = async (req, res) => {
     }
 
     await faculty.deleteOne();
+    logger.info(`✅ Successfully deleted faculty: ${faculty.name || faculty._id}`);
     res.status(200).json({ success: true, data: {} });
   } catch (err) {
+    logger.error(`❌ Failed to delete faculty ${req.params.id}: ${err.message}`);
     res.status(400).json({ success: false, error: err.message });
   }
 };

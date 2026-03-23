@@ -1,5 +1,6 @@
 const Registration = require('../models/Registration');
 const Event = require('../models/Event');
+const logger = require('../utils/logger');
 
 // @desc    Register for an event
 // @route   POST /api/registrations
@@ -39,8 +40,10 @@ exports.registerEvent = async (req, res) => {
             formData
         });
 
+        logger.info(`✅ Successfully registered user ${req.user.id} for event ${eventId}`);
         res.status(201).json({ success: true, data: registration });
     } catch (error) {
+        logger.error(`❌ Failed event registration attempt: ${error.message}`);
         res.status(400).json({ success: false, error: error.message });
     }
 };

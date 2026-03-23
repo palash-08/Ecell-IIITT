@@ -5,7 +5,9 @@ const {
     getMe,
     getAdmins,
     addAdmin,
-    removeAdmin
+    removeAdmin,
+    forgotPassword,
+    resetPassword
 } = require('../controllers/authController');
 
 const router = express.Router();
@@ -14,6 +16,8 @@ const { protect, authorize } = require('../middleware/authMiddleware');
 
 router.post('/register', register);
 router.post('/login', login);
+router.post('/forgotpassword', forgotPassword);
+router.post('/resetpassword', resetPassword);
 router.get('/me', protect, getMe);
 
 // Admin management routes (Super Admin only)

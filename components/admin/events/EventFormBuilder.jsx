@@ -9,9 +9,7 @@ const EventFormBuilder = ({ formFields, setFormFields }) => {
       label: `New ${type.charAt(0).toUpperCase() + type.slice(1)} Field`,
       required: false,
       systematic: false,
-      options: ['radio', 'checkbox'].includes(type) ? ['Option 1'] : undefined,
-      maxSize: type === 'file' ? 5 : undefined,
-      fileType: type === 'file' ? 'image/*' : undefined
+      options: ['radio', 'checkbox'].includes(type) ? ['Option 1'] : undefined
     };
     setFormFields([...formFields, newField]);
   };
@@ -29,8 +27,7 @@ const EventFormBuilder = ({ formFields, setFormFields }) => {
     { type: 'textarea', label: 'Long Text' },
     { type: 'number', label: 'Number' },
     { type: 'radio', label: 'Single Choice' },
-    { type: 'checkbox', label: 'Multiple Choice' },
-    { type: 'file', label: 'File Upload' },
+    { type: 'checkbox', label: 'Multiple Choice' }
   ];
 
   return (
@@ -122,32 +119,7 @@ const EventFormBuilder = ({ formFields, setFormFields }) => {
                 </div>
               )}
 
-              {field.type === 'file' && (
-                <div className="md:col-span-2 grid grid-cols-2 gap-4 bg-gray-50 rounded-xl p-4 border border-gray-100">
-                  <div>
-                    <label className="block text-[10px] font-bold text-gray-400 mb-1 uppercase tracking-wider">Max Size (MB)</label>
-                    <input 
-                      type="number" 
-                      value={field.maxSize || 5}
-                      onChange={(e) => updateField(field.id, { maxSize: parseInt(e.target.value) })}
-                      className="w-full bg-transparent border-b border-gray-200 focus:border-[#FFB800] focus:outline-none font-bold text-black text-sm" 
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-bold text-gray-400 mb-1 uppercase tracking-wider">File Types</label>
-                    <select 
-                      value={field.fileType || 'image/*'}
-                      onChange={(e) => updateField(field.id, { fileType: e.target.value })}
-                      className="w-full bg-transparent border-b border-gray-200 focus:border-[#FFB800] focus:outline-none font-bold text-black text-sm"
-                    >
-                      <option value="image/*">Images Only</option>
-                      <option value=".pdf">PDF Only</option>
-                      <option value="image/*,.pdf">Images & PDF</option>
-                      <option value="*/*">Any File</option>
-                    </select>
-                  </div>
-                </div>
-              )}
+
 
               <div className="flex items-center gap-4 pt-4 md:pt-0">
                  <label className="flex items-center gap-2 cursor-pointer select-none">

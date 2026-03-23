@@ -150,7 +150,7 @@ export default function EventOverviewPage() {
              <img 
                src={`${API_URL}${event.mainImage}`} 
                alt={event.title} 
-               className="w-full h-full object-cover"
+               className="w-full h-full object-contain"
              />
              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-10">
                 <h3 className="text-white text-3xl font-black">{event.title}</h3>

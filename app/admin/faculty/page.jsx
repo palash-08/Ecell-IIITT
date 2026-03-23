@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { FiPlus, FiEdit2, FiTrash2, FiRefreshCcw, FiUser, FiBriefcase, FiMessageSquare } from 'react-icons/fi';
+import { FiPlus, FiEdit2, FiTrash2, FiRefreshCcw, FiUser, FiMessageSquare } from 'react-icons/fi';
 import Link from 'next/link';
 import api from '@/lib/api';
 
@@ -49,18 +49,19 @@ export default function AdminFacultyPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
         <div>
           <h1 className="text-3xl font-extrabold text-black mb-2">Faculty Management</h1>
-          <p className="text-gray-500 font-medium">Manage faculty advisors and their messages for the About page.</p>
+          <p className="text-gray-500 font-medium">Manage faculty Incharge and their messages for the About page.</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
             <button 
                 onClick={fetchFaculty}
-                className="p-3 bg-white border border-gray-200 rounded-xl text-gray-500 hover:text-black hover:border-gray-300 transition-all"
+                className="flex items-center justify-center p-3 bg-white border border-gray-200 rounded-xl text-gray-500 hover:text-black hover:border-gray-300 transition-all order-2 sm:order-1"
             >
                 <FiRefreshCcw size={20} className={loading ? 'animate-spin' : ''} />
+                <span className="sm:hidden ml-2 font-bold">Refresh List</span>
             </button>
             <Link 
             href="/admin/faculty/create" 
-            className="flex items-center gap-2 bg-[#FFB800] text-black px-6 py-3 rounded-xl font-bold hover:bg-[#e6a700] hover:-translate-y-0.5 transition-all shadow-sm"
+            className="flex items-center justify-center gap-2 bg-[#FFB800] text-black px-6 py-3 rounded-xl font-bold hover:bg-[#e6a700] hover:-translate-y-0.5 transition-all shadow-sm order-1 sm:order-2 w-full sm:w-auto"
             >
             <FiPlus size={20} />
             Add Faculty
@@ -73,10 +74,10 @@ export default function AdminFacultyPage() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-gray-50/50 border-b border-gray-100">
-                <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Faculty Member</th>
-                <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Role</th>
-                <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Status</th>
-                <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Actions</th>
+                <th className="px-4 md:px-8 py-4 md:py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Faculty Member</th>
+                <th className="px-4 md:px-8 py-4 md:py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Role</th>
+                <th className="px-4 md:px-8 py-4 md:py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Status</th>
+                <th className="px-4 md:px-8 py-4 md:py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
@@ -98,7 +99,7 @@ export default function AdminFacultyPage() {
               ) : (
                 faculty.map((f) => (
                   <tr key={f._id} className="hover:bg-gray-50/50 transition-colors">
-                    <td className="px-8 py-6">
+                    <td className="px-4 md:px-8 py-5 md:py-6">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100 border border-gray-200 flex-shrink-0">
                           {f.image ? (
@@ -121,10 +122,10 @@ export default function AdminFacultyPage() {
                         </div>
                       </div>
                     </td>
-                    <td className="px-8 py-6">
+                    <td className="px-4 md:px-8 py-5 md:py-6">
                       <span className="text-sm font-bold text-gray-600">{f.role}</span>
                     </td>
-                    <td className="px-8 py-6 text-center">
+                    <td className="px-4 md:px-8 py-5 md:py-6 text-center">
                       <button 
                         onClick={() => toggleStatus(f)}
                         className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all ${f.active ? 'bg-green-50 text-green-600 border-green-100' : 'bg-gray-50 text-gray-400 border-gray-100'}`}
@@ -132,7 +133,7 @@ export default function AdminFacultyPage() {
                         {f.active ? 'Active' : 'Inactive'}
                       </button>
                     </td>
-                    <td className="px-8 py-6">
+                    <td className="px-4 md:px-8 py-5 md:py-6">
                       <div className="flex justify-end gap-2">
                         <Link 
                           href={`/admin/faculty/edit/${f._id}`}

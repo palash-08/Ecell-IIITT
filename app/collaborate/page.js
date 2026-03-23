@@ -57,7 +57,7 @@ const CollaboratePage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter"
+            className="text-4xl md:text-8xl font-black text-white mb-8 tracking-tighter"
           >
             Build the <span className="text-[#FFB800]">Future.</span>
           </motion.h1>
@@ -135,7 +135,7 @@ const CollaboratePage = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center bg-[#1A1A1A] border border-[#262626] rounded-[2.5rem] p-16 relative overflow-hidden"
+          className="text-center bg-[#1A1A1A] border border-[#262626] rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden"
         >
           <div className="absolute top-[-50%] left-[20%] w-[600px] h-[600px] bg-[#FFB800]/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -143,7 +143,7 @@ const CollaboratePage = () => {
             Let’s Build Something Meaningful Together
           </h2>
 
-          <p className="text-gray-400 text-xl mb-10 max-w-2xl mx-auto font-medium relative z-10">
+          <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-medium relative z-10">
             Whether you&apos;re a startup, organization, or individual, we&apos;re always
             open to collaborations that create value for students and the
             ecosystem.
@@ -151,7 +151,7 @@ const CollaboratePage = () => {
 
           <Link
             href="/contact"
-            className="relative z-10 inline-block px-12 py-5 bg-[#FFB800] text-black font-bold text-lg rounded-full hover:bg-[#e6a700] hover:-translate-y-1 transition-all shadow-[0_0_30px_rgba(255,184,0,0.2)]"
+            className="relative z-10 inline-block px-8 py-4 md:px-12 md:py-5 bg-[#FFB800] text-black font-bold text-base md:text-lg rounded-full hover:bg-[#e6a700] hover:-translate-y-1 transition-all shadow-[0_0_30px_rgba(255,184,0,0.2)]"
           >
             Get in Touch
           </Link>

@@ -8,8 +8,6 @@ import BentoGallery from '@/components/gallery/BentoGallery';
 import Link from 'next/link';
 import Image from 'next/image';
 import api from '@/lib/api';
-
-// Import local components
 import EventDetailHeader from '@/components/events/EventDetailHeader';
 import EventHighlightsSection from '@/components/events/EventHighlightsSection';
 import EventResourcesSection from '@/components/events/EventResourcesSection';
@@ -91,10 +89,8 @@ export default function EventDetailPage() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
   return (
-    <div className="min-h-screen bg-white pt-[80px]">
-      
+    <div className="min-h-screen bg-white pt-[80px]"> 
       <EventDetailHeader event={event} />
-
       <div className="max-w-7xl mx-auto px-6 py-20 flex flex-col lg:flex-row gap-20">
         {/* Main Content */}
         <div className="flex-1">
@@ -110,7 +106,16 @@ export default function EventDetailPage() {
           <EventHighlightsSection highlights={event.highlights} />
 
           {/* Media Gallery Section */}
-          {galleryItems && galleryItems.length > 0 && (
+          {loadingGallery ? (
+            <section className="mb-16">
+              <h3 className="text-3xl font-black text-black mb-10 flex items-center gap-4">
+                <FiImage className="text-gray-200" /> Event <span className="text-gray-200">Gallery.</span>
+              </h3>
+              <div className="h-64 bg-gray-50 rounded-3xl flex items-center justify-center border border-gray-100 animate-pulse">
+                <p className="text-xs font-black text-gray-400 uppercase tracking-widest">Loading Media...</p>
+              </div>
+            </section>
+          ) : galleryItems && galleryItems.length > 0 && (
             <section className="mb-16">
               <h3 className="text-3xl font-black text-black mb-10 flex items-center gap-4">
                 <FiImage className="text-[#FFB800]" /> Event <span className="text-gray-300">Gallery.</span>
@@ -161,7 +166,14 @@ export default function EventDetailPage() {
 
         {/* Form Sidebar */}
         <div className="w-full lg:w-[400px]">
-          {isRegistered ? (
+          {checkingRegistration ? (
+             <div className="bg-gray-50 border border-gray-100 rounded-3xl p-10 text-center sticky top-24 shadow-sm animate-pulse">
+                <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-6"></div>
+                <div className="h-6 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto mb-8"></div>
+                <div className="w-full h-14 bg-gray-200 rounded-2xl mx-auto"></div>
+             </div>
+          ) : isRegistered ? (
              <div className="bg-green-50 border border-green-200 rounded-3xl p-10 text-center sticky top-24 shadow-sm">
                 <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
                   <FiCheckCircle size={32} />

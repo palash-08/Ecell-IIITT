@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaTwitter, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -18,7 +18,7 @@ const Footer = () => {
           <div className="flex items-center gap-3 mb-4">
             <div className="bg-white p-1 rounded-full">
               <img
-                src="/Ecelllogo.jpeg"
+                src="/Ecell-logo.png"
                 alt="E-Cell IIIT Trichy"
                 className="h-10 w-10 object-cover rounded-full"
               />
@@ -84,7 +84,6 @@ const Footer = () => {
             Follow Us
           </h4>
           <div className="flex gap-4">
-           
             <a
               href="#"
               className="bg-white/10 hover:bg-[#FFB800] hover:text-black p-3 rounded-full transition-all duration-300"
@@ -97,7 +96,6 @@ const Footer = () => {
             >
               <FaInstagram />
             </a>
-           
           </div>
         </div>
       </div>

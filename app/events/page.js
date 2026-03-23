@@ -54,7 +54,7 @@ export default function EventsPage() {
       />
 
       {/* Filter Bar */}
-      <div className="sticky top-[80px] z-30 bg-white border-b border-gray-100 py-4 px-6">
+      <div className="top-[80px] z-30 bg-white border-b border-gray-100 py-4 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex gap-2 p-1 bg-gray-50 rounded-xl border border-gray-100 overflow-x-auto no-scrollbar max-w-full">
             {categories.map((cat) => (

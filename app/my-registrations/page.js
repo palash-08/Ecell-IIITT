@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import api from '@/lib/api';
-import { FiCalendar, FiMapPin, FiClock, FiFileText, FiX, FiCheckCircle, FiChevronRight, FiGrid } from 'react-icons/fi';
+import { FiCalendar, FiMapPin, FiFileText, FiX, FiCheckCircle, FiChevronRight, FiGrid } from 'react-icons/fi';
 import Link from 'next/link';
 import ProtectedRoute from '@/components/auth/ProtectedRoute';
 import { motion, AnimatePresence } from 'motion/react';

@@ -11,16 +11,16 @@ const EventListTable = ({ events, onDelete }) => {
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-gray-50 border-b border-gray-200">
-              <th className="px-6 py-4 text-sm font-bold text-gray-500 uppercase tracking-wider">Event Details</th>
-              <th className="px-6 py-4 text-sm font-bold text-gray-500 uppercase tracking-wider">Date & Venue</th>
-              <th className="px-6 py-4 text-sm font-bold text-gray-500 uppercase tracking-wider">Status</th>
-              <th className="px-6 py-4 text-sm font-bold text-gray-500 uppercase tracking-wider text-right">Actions</th>
+              <th className="px-4 md:px-6 py-4 text-[10px] md:text-sm font-bold text-gray-500 uppercase tracking-wider">Event Details</th>
+              <th className="px-4 md:px-6 py-4 text-[10px] md:text-sm font-bold text-gray-500 uppercase tracking-wider">Date & Venue</th>
+              <th className="px-4 md:px-6 py-4 text-[10px] md:text-sm font-bold text-gray-500 uppercase tracking-wider">Status</th>
+              <th className="px-4 md:px-6 py-4 text-[10px] md:text-sm font-bold text-gray-500 uppercase tracking-wider text-right">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
             {events.map((event) => (
               <tr key={event._id} className="hover:bg-gray-50 transition-colors group">
-                <td className="px-6 py-5">
+                <td className="px-4 md:px-6 py-5">
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-10 rounded-lg bg-gray-100 flex-shrink-0 overflow-hidden border border-gray-200">
                       {event.mainImage ? (
@@ -39,7 +39,7 @@ const EventListTable = ({ events, onDelete }) => {
                         </div>
                   </div>
                 </td>
-                <td className="px-6 py-5">
+                <td className="px-4 md:px-6 py-5">
                   <div className="flex flex-col gap-1.5">
                     <div className="flex items-center gap-1.5 text-sm font-bold text-gray-700">
                        <FiCalendar size={14} className="text-[#FFB800]" />
@@ -51,7 +51,7 @@ const EventListTable = ({ events, onDelete }) => {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-5">
+                <td className="px-4 md:px-6 py-5">
                   {(() => {
                     const eventDate = new Date(event.date);
                     eventDate.setHours(0, 0, 0, 0);
@@ -64,14 +64,14 @@ const EventListTable = ({ events, onDelete }) => {
                       <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
                         !isCompleted ? 'bg-amber-50 text-amber-600 border border-amber-100' : 'bg-green-50 text-green-600 border border-green-100'
                       }`}>
-                        <span className={`w-1.5 h-1.5 rounded-full ${!isCompleted ? 'bg-amber-400' : 'bg-green-500'}`}></span>
+                        {/* <span className={`w-1.5 h-1.5 rounded-full ${!isCompleted ? 'bg-amber-400' : 'bg-green-500'}`}></span> */}
                         {displayStatus}
                       </span>
                     );
                   })()}
                 </td>
-                <td className="px-6 py-5 text-right">
-                  <div className="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                <td className="px-4 md:px-6 py-5 text-right">
+                  <div className="flex justify-end gap-3">
                     <Link 
                       href={`/admin/events/${event._id}/submissions`}
                       className="p-2 text-gray-400 hover:text-[#FFB800] hover:bg-amber-50 rounded-lg transition-colors" 

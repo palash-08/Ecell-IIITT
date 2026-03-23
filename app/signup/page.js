@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { FiMail, FiLock, FiUser, FiArrowRight, FiAlertCircle } from 'react-icons/fi';
+import { FiMail, FiLock, FiUser, FiArrowRight, FiAlertCircle, FiEye, FiEyeOff } from 'react-icons/fi';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -10,6 +10,7 @@ export default function SignupPage() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     
@@ -95,14 +96,21 @@ export default function SignupPage() {
                             <div className="relative group">
                                 <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#FFB800] transition-colors" />
                                 <input 
-                                    type="password" 
+                                    type={showPassword ? 'text' : 'password'} 
                                     required
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="••••••••"
                                     minLength="6"
-                                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 focus:border-[#FFB800] transition-all font-medium"
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-12 text-white focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 focus:border-[#FFB800] transition-all font-medium"
                                 />
+                                <button 
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#FFB800] transition-colors"
+                                >
+                                    {showPassword ? <FiEye /> : <FiEyeOff />}
+                                </button>
                             </div>
                         </div>
 

@@ -25,7 +25,14 @@ const UserSchema = new mongoose.Schema({
         type: String,
         enum: ['user', 'admin', 'super-admin'],
         default: 'user'
-    }
+    },
+    resetPasswordOTP: String,
+    resetPasswordExpire: Date,
+    loginAttempts: {
+        type: Number,
+        default: 0
+    },
+    lockUntil: Date
 }, { timestamps: true });
 
 // Encrypt password using bcrypt

@@ -1,5 +1,8 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+const sendEmail = require('../utils/sendEmail');
+const logger = require('../utils/logger');
 
 // @desc    Register user
 // @route   POST /api/auth/register
@@ -15,8 +18,10 @@ exports.register = async (req, res) => {
             password
         });
 
+        logger.info(`New user registered: ${email}`);
         sendTokenResponse(user, 201, res);
     } catch (err) {
+        logger.error(`Registration failed for ${req.body?.email || 'unknown'}: ${err.message}`);
         res.status(400).json({
             success: false,
             error: err.message
@@ -43,9 +48,20 @@ exports.login = async (req, res) => {
         const user = await User.findOne({ email }).select('+password');
 
         if (!user) {
+            logger.warn(`Failed login attempt for unknown email: ${email}`);
             return res.status(401).json({
                 success: false,
-                error: 'Invalid credentials (USer not found)'
+                error: 'Invalid credentials'
+            });
+        }
+
+        // Check if account is temporarily locked
+        if (user.lockUntil && user.lockUntil > Date.now()) {
+            const minutesLeft = Math.ceil((user.lockUntil - Date.now()) / (60 * 1000));
+            logger.warn(`Login rejected for locked account: ${email}`);
+            return res.status(401).json({
+                success: false,
+                error: `Account temporarily locked due to too many failed attempts. Try again in ${minutesLeft} minute(s).`
             });
         }
 
@@ -53,14 +69,37 @@ exports.login = async (req, res) => {
         const isMatch = await user.matchPassword(password);
 
         if (!isMatch) {
+            user.loginAttempts = (user.loginAttempts || 0) + 1;
+            
+            if (user.loginAttempts >= 5) {
+                user.lockUntil = Date.now() + 5 * 60 * 1000; // Lock for 5 minutes
+                await user.save({ validateBeforeSave: false });
+                logger.warn(`Account locked due to 5 failed attempts: ${email}`);
+                return res.status(401).json({
+                    success: false,
+                    error: 'Too many failed login attempts. Account locked for 5 minutes.'
+                });
+            }
+            
+            await user.save({ validateBeforeSave: false });
+            logger.warn(`Failed login attempt for: ${email} (${5 - user.loginAttempts} attempts remaining)`);
             return res.status(401).json({
                 success: false,
-                error: 'Invalid credentials (Password incorrect)'
+                error: `Invalid credentials. ${5 - user.loginAttempts} attempt(s) remaining.`
             });
         }
 
+        // Reset login attempts if successful
+        if (user.loginAttempts > 0) {
+            user.loginAttempts = 0;
+            user.lockUntil = undefined;
+            await user.save({ validateBeforeSave: false });
+        }
+
+        logger.info(`User logged in successfully: ${email}`);
         sendTokenResponse(user, 200, res);
     } catch (err) {
+        logger.error(`Login error for ${req.body?.email || 'unknown'}: ${err.message}`);
         res.status(400).json({
             success: false,
             error: err.message
@@ -183,6 +222,122 @@ exports.removeAdmin = async (req, res) => {
             data: {}
         });
     } catch (err) {
+        res.status(400).json({
+            success: false,
+            error: err.message
+        });
+    }
+};
+
+// @desc    Forgot password
+// @route   POST /api/auth/forgotpassword
+// @access  Public
+exports.forgotPassword = async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                error: 'There is no user with that email'
+            });
+        }
+
+        // Generate 6-digit OTP
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+        // Hash OTP and set to resetPasswordOTP field
+        user.resetPasswordOTP = crypto
+            .createHash('sha256')
+            .update(otp)
+            .digest('hex');
+
+        // Set expire (10 minutes)
+        user.resetPasswordExpire = Date.now() + 10 * 60 * 1000;
+
+        await user.save({ validateBeforeSave: false });
+
+        const message = `Your password reset OTP is ${otp}. It will expire in 10 minutes.`;
+
+        try {
+            await sendEmail({
+                email: user.email,
+                subject: 'Password Reset OTP',
+                message
+            });
+
+            logger.info(`Password reset requested for: ${user.email}`);
+
+            res.status(200).json({
+                success: true,
+                data: 'Email sent'
+            });
+        } catch (err) {
+            logger.error(`Failed to send OTP email to ${user.email}: ${err.message}`);
+            user.resetPasswordOTP = undefined;
+            user.resetPasswordExpire = undefined;
+
+            await user.save({ validateBeforeSave: false });
+
+            return res.status(500).json({
+                success: false,
+                error: 'Email could not be sent'
+            });
+        }
+    } catch (err) {
+        logger.error(`Error in forgotPassword: ${err.message}`);
+        res.status(400).json({
+            success: false,
+            error: err.message
+        });
+    }
+};
+
+// @desc    Reset password
+// @route   POST /api/auth/resetpassword
+// @access  Public
+exports.resetPassword = async (req, res) => {
+    try {
+        const { email, otp, password } = req.body;
+
+        if (!email || !otp || !password) {
+            return res.status(400).json({
+                success: false,
+                error: 'Please provide email, OTP and new password'
+            });
+        }
+
+        // Get hashed OTP
+        const hashedOTP = crypto
+            .createHash('sha256')
+            .update(otp)
+            .digest('hex');
+
+        const user = await User.findOne({
+            email,
+            resetPasswordOTP: hashedOTP,
+            resetPasswordExpire: { $gt: Date.now() }
+        });
+
+        if (!user) {
+            logger.warn(`Invalid or expired OTP attempt for: ${email}`);
+            return res.status(400).json({
+                success: false,
+                error: 'Invalid or expired OTP'
+            });
+        }
+
+        // Set new password
+        user.password = password;
+        user.resetPasswordOTP = undefined;
+        user.resetPasswordExpire = undefined;
+
+        await user.save();
+
+        logger.info(`Password successfully reset for: ${email}`);
+        sendTokenResponse(user, 200, res);
+    } catch (err) {
+        logger.error(`Error in resetPassword for ${req.body?.email || 'unknown'}: ${err.message}`);
         res.status(400).json({
             success: false,
             error: err.message

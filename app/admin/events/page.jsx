@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiPlus, FiCalendar, FiRefreshCcw } from 'react-icons/fi';
 import api from '@/lib/api';
-
-// Import shared and local components
 import AdminHeader from '@/components/admin/shared/AdminHeader';
 import AdminStatusBlock from '@/components/admin/shared/AdminStatusBlock';
 import EventListTable from '@/components/admin/events/EventListTable';

@@ -1,4 +1,5 @@
 const TeamMember = require('../models/TeamMember');
+const logger = require('../utils/logger');
 
 // @desc    Get all team members
 // @route   GET /api/team
@@ -36,8 +37,10 @@ exports.createTeamMember = async (req, res) => {
         }
 
         const member = await TeamMember.create(memberData);
+        logger.info(`✅ Successfully created team member: ${member.name || member._id}`);
         res.status(201).json({ success: true, data: member });
     } catch (error) {
+        logger.error(`❌ Failed to create team member: ${error.message}`);
         res.status(400).json({ success: false, error: error.message });
     }
 };
@@ -61,8 +64,10 @@ exports.updateTeamMember = async (req, res) => {
             return res.status(404).json({ success: false, message: 'Member not found' });
         }
 
+        logger.info(`✅ Successfully updated team member: ${member.name || member._id}`);
         res.status(200).json({ success: true, data: member });
     } catch (error) {
+        logger.error(`❌ Failed to update team member ${req.params.id}: ${error.message}`);
         res.status(400).json({ success: false, error: error.message });
     }
 };
@@ -75,8 +80,10 @@ exports.deleteTeamMember = async (req, res) => {
         if (!member) {
             return res.status(404).json({ success: false, message: 'Member not found' });
         }
+        logger.info(`✅ Successfully deleted team member: ${member.name || member._id}`);
         res.status(200).json({ success: true, data: {} });
     } catch (error) {
+        logger.error(`❌ Failed to delete team member ${req.params.id}: ${error.message}`);
         res.status(500).json({ success: false, error: error.message });
     }
 };

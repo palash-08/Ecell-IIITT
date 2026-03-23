@@ -30,12 +30,12 @@ const StoryPage = () => {
           transition={{ delay: 0.2 }}
           className="prose prose-lg max-w-none text-gray-700"
         >
-          <div className="relative w-full h-[400px] mb-12 rounded-3xl overflow-hidden shadow-xl">
+          <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto mb-16 rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100 bg-white flex items-center justify-center">
             <Image
-              src="/meeting.jpg"
-              alt="E-Cell Team"
+              src="/Ecell-logo.png"
+              alt="E-Cell Logo"
               fill
-              className="object-cover"
+              className="object-contain object-center p-6"
             />
           </div>
 

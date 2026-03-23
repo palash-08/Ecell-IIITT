@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { FiSend, FiMail, FiPhone, FiMapPin, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
+import { FiSend, FiMail, FiMapPin, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 import api from '@/lib/api';
 
 export default function ContactPage() {
@@ -33,7 +33,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       
       <div className="bg-black py-32 px-6 relative">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
@@ -114,7 +114,10 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Message</label>
+                  <div className="flex justify-between items-center mb-3">
+                    <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest">Message</label>
+                    <span className="text-[10px] font-bold text-gray-400">{(formData.message || '').length}/500</span>
+                  </div>
                   <textarea 
                     rows={5} 
                     required
@@ -122,6 +125,7 @@ export default function ContactPage() {
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                     placeholder="Tell us how we can help or collaborate..."
                     className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 transition-all font-bold text-black resize-none"
+                    maxLength={500}
                   ></textarea>
                 </div>
                 

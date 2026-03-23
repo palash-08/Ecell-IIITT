@@ -17,7 +17,7 @@ const bootstrapSuperAdmin = async () => {
         }
 
         await User.create({
-            name: 'Super Admin',
+            name: 'Faculty Incharge',
             email,
             password,
             role: 'super-admin'

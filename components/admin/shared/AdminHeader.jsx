@@ -13,10 +13,10 @@ const AdminHeader = ({ backLink, title, highlight, description, actions = [] }) 
       )}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-extrabold text-black mb-2">
+          <h1 className="text-2xl md:text-3xl font-extrabold text-black mb-2">
             {title} {highlight && <span className="text-[#FFB800]">{highlight}</span>}
           </h1>
-          {description && <p className="text-gray-500 font-medium text-lg">{description}</p>}
+          {description && <p className="text-gray-500 font-medium text-base md:text-lg">{description}</p>}
         </div>
         <div className="flex flex-wrap gap-3">
           {actions.map((action, index) => (

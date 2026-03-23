@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { motion } from "motion/react";
-import Image from "next/image";
 import Link from "next/link";
 
 const CollaborateSection = () => {
@@ -30,7 +29,7 @@ Join us in shaping opportunities and experiences for the next generation of buil
         >
           <Link
             href="/collaborate"
-            className="inline-flex items-center px-10 py-5 bg-[#FFB800] text-black font-bold text-lg rounded-full hover:bg-[#e6a700] hover:-translate-y-1 hover:shadow-lg transition-all shadow-sm"
+            className="inline-flex items-center px-6 py-3 md:px-10 md:py-5 bg-[#FFB800] text-black font-bold text-base md:text-lg rounded-full hover:bg-[#e6a700] hover:-translate-y-1 hover:shadow-lg transition-all shadow-sm"
           >
             Start a Collaboration
           </Link>

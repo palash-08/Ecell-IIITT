@@ -1,4 +1,5 @@
 const Event = require('../models/Event');
+const logger = require('../utils/logger');
 
 // @desc    Get all events
 // @route   GET /api/events
@@ -64,9 +65,11 @@ exports.createEvent = async (req, res) => {
         if (typeof eventData.externalLinks === 'string') eventData.externalLinks = JSON.parse(eventData.externalLinks);
 
         const event = await Event.create(eventData);
+        logger.info(`✅ Successfully created new event: ${event.title || event._id}`);
         res.status(201).json({ success: true, data: event });
     } catch (error) {
         cleanupFiles(req.files);
+        logger.error(`❌ Failed to create new event: ${error.message}`);
         res.status(400).json({ success: false, error: error.message });
     }
 };
@@ -141,9 +144,11 @@ exports.updateEvent = async (req, res) => {
             runValidators: true
         });
 
+        logger.info(`✅ Successfully updated event: ${event.title || event._id}`);
         res.status(200).json({ success: true, data: event });
     } catch (error) {
         cleanupFiles(req.files);
+        logger.error(`❌ Failed to update event ${req.params.id}: ${error.message}`);
         res.status(400).json({ success: false, error: error.message });
     }
 };
@@ -170,8 +175,10 @@ exports.deleteEvent = async (req, res) => {
         if (!event) {
             return res.status(404).json({ success: false, message: 'Event not found' });
         }
+        logger.info(`✅ Successfully deleted event: ${event.title || event._id}`);
         res.status(200).json({ success: true, data: {} });
     } catch (error) {
+        logger.error(`❌ Failed to delete event ${req.params.id}: ${error.message}`);
         res.status(500).json({ success: false, error: error.message });
     }
 };

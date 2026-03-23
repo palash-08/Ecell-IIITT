@@ -1,4 +1,5 @@
 const GalleryItem = require('../models/GalleryItem');
+const logger = require('../utils/logger');
 
 // @desc    Get all gallery items
 // @route   GET /api/gallery
@@ -69,8 +70,10 @@ exports.addGalleryItem = async (req, res) => {
         }
 
         const item = await GalleryItem.create(galleryData);
+        logger.info(`✅ Successfully added gallery item: ${item._id}`);
         res.status(201).json({ success: true, data: item });
     } catch (error) {
+        logger.error(`❌ Failed to add gallery item: ${error.message}`);
         res.status(400).json({ success: false, error: error.message });
     }
 };
@@ -81,8 +84,11 @@ exports.deleteGalleryItem = async (req, res) => {
     try {
         const item = await GalleryItem.findByIdAndDelete(req.params.id);
         if (!item) return res.status(404).json({ success: false, message: 'Item not found' });
+        
+        logger.info(`✅ Successfully deleted gallery item: ${item._id}`);
         res.status(200).json({ success: true, data: {} });
     } catch (error) {
+        logger.error(`❌ Failed to delete gallery item ${req.params.id}: ${error.message}`);
         res.status(500).json({ success: false, error: error.message });
     }
 };

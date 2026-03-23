@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiPlus, FiUpload, FiTrash2 } from 'react-icons/fi';
 
-const EventMediaGallery = ({ galleryPreviews, onGalleryChange, onRemoveImage }) => {
+const EventMediaGallery = ({ galleryPreviews, onGalleryChange, onRemoveImage, isLimitReached }) => {
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
       <div className="flex justify-between items-center mb-6">
@@ -10,10 +10,15 @@ const EventMediaGallery = ({ galleryPreviews, onGalleryChange, onRemoveImage }) 
           <p className="text-sm text-gray-500">Upload additional photos or media from past sessions or event teasers.</p>
         </div>
         <button 
-          onClick={() => document.getElementById('gallery-upload').click()}
-          className="flex items-center gap-2 px-4 py-2 bg-gray-50 hover:bg-[#FFB800] hover:text-black text-gray-600 rounded-xl font-bold text-sm transition-all border border-gray-100"
+          onClick={() => !isLimitReached && document.getElementById('gallery-upload').click()}
+          disabled={isLimitReached}
+          className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-sm transition-all border ${
+            isLimitReached 
+            ? 'bg-gray-100 text-gray-400 border-gray-100 cursor-not-allowed' 
+            : 'bg-gray-50 hover:bg-[#FFB800] hover:text-black text-gray-600 border-gray-100'
+          }`}
         >
-          <FiPlus /> Add Photos/Videos
+          <FiPlus /> {isLimitReached ? 'Storage Full (30MB)' : 'Add Photos/Videos'}
         </button>
         <input 
           id="gallery-upload"
@@ -49,13 +54,20 @@ const EventMediaGallery = ({ galleryPreviews, onGalleryChange, onRemoveImage }) 
           </div>
         ))}
         
-        <div 
-          onClick={() => document.getElementById('gallery-upload').click()}
-          className="aspect-video bg-gray-50 border-2 border-dashed border-gray-200 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-[#FFB800] hover:bg-[#FFB800]/5 transition-all"
-        >
-          <FiUpload size={20} className="text-gray-300 mb-1" />
-          <span className="text-[10px] font-bold text-gray-400 capitalize">Upload More</span>
-        </div>
+        {!isLimitReached ? (
+          <div 
+            onClick={() => document.getElementById('gallery-upload').click()}
+            className="aspect-video bg-gray-50 border-2 border-dashed border-gray-200 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-[#FFB800] hover:bg-[#FFB800]/5 transition-all"
+          >
+            <FiUpload size={20} className="text-gray-300 mb-1" />
+            <span className="text-[10px] font-bold text-gray-400 capitalize">Upload More</span>
+          </div>
+        ) : (
+          <div className="aspect-video bg-gray-50 border-2 border-dashed border-gray-200 rounded-xl flex flex-col items-center justify-center opacity-50 cursor-not-allowed">
+            <FiUpload size={20} className="text-gray-300 mb-1" />
+            <span className="text-[10px] font-bold text-gray-400 capitalize">Storage Full</span>
+          </div>
+        )}
       </div>
     </div>
   );

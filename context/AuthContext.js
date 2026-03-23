@@ -68,6 +68,35 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    // Forgot Password
+    const forgotPassword = async (email) => {
+        try {
+            await api.post('/auth/forgotpassword', { email });
+            return { success: true };
+        } catch (err) {
+            return {
+                success: false,
+                error: err.response?.data?.error || 'Failed to send OTP'
+            };
+        }
+    };
+
+    // Reset Password
+    const resetPassword = async (email, otp, password) => {
+        try {
+            const res = await api.post('/auth/resetpassword', { email, otp, password });
+            if (typeof window !== 'undefined') localStorage.setItem('token', res.data.token);
+            setUser(res.data.user);
+            router.push('/');
+            return { success: true };
+        } catch (err) {
+            return {
+                success: false,
+                error: err.response?.data?.error || 'Reset password failed'
+            };
+        }
+    };
+
     // Logout User
     const logout = () => {
         if (typeof window !== 'undefined') localStorage.removeItem('token');
@@ -83,6 +112,8 @@ export const AuthProvider = ({ children }) => {
                 register,
                 login,
                 logout,
+                forgotPassword,
+                resetPassword,
                 setUser
             }}
         >
@@ -96,7 +127,7 @@ export const useAuth = () => {
     if (!context) {
         // This will help us confirm if we are outside the provider
         console.error("useAuth must be used within an AuthProvider");
-        return { user: null, loading: false, login: () => {}, logout: () => {}, register: () => {} };
+        return { user: null, loading: false, login: () => {}, logout: () => {}, register: () => {}, forgotPassword: () => {}, resetPassword: () => {} };
     }
     return context;
 };

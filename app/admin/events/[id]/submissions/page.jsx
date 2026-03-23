@@ -4,8 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { FiDownload, FiUser, FiRefreshCcw } from 'react-icons/fi';
 import { useParams } from 'next/navigation';
 import api from '@/lib/api';
-
-// Import shared and local components
 import AdminHeader from '@/components/admin/shared/AdminHeader';
 import AdminStatusBlock from '@/components/admin/shared/AdminStatusBlock';
 import SubmissionTable from '@/components/admin/events/SubmissionTable';
@@ -44,25 +42,39 @@ export default function EventSubmissionsPage() {
   const handleExport = () => {
     if (registrations.length === 0) return;
     
-    // Get all unique keys from formData across all registrations
-    const dynamicKeys = Array.from(new Set(registrations.flatMap(r => Object.keys(r.formData))));
-    const headers = ['Registration Date', ...dynamicKeys];
+    // Get all unique keys from formData across all registrations safely
+    const dynamicKeys = Array.from(new Set(registrations.flatMap(r => Object.keys(r.formData || {}))));
+    
+    // Separate Date and Time for cleaner CSV parsing
+    const headers = ['Registration Date', 'Registration Time', ...dynamicKeys];
     
     const csvRows = registrations.map(reg => {
+      const d = new Date(reg.createdAt);
+      const dateStr = d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      const timeStr = d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
       const rowData = headers.map(header => {
-        if (header === 'Registration Date') return new Date(reg.createdAt).toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-        return `"${reg.formData[header] || ''}"`;
+        if (header === 'Registration Date') return `"${dateStr}"`;
+        if (header === 'Registration Time') return `"${timeStr}"`;
+        
+        // Safely extract and escape values to prevent CSV breaking
+        const val = reg.formData ? (reg.formData[header] || '') : '';
+        const escapedVal = String(val).replace(/"/g, '""');
+        return `"${escapedVal}"`;
       });
+      
       return rowData.join(',');
     });
 
-    const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...csvRows].join('\n');
+    // Add \uFEFF BOM for Excel UTF-8 compatibility
+    const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + [headers.map(h => `"${h}"`).join(','), ...csvRows].join('\n');
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", `submissions_${event?.title || 'event'}.csv`);
     document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   return (

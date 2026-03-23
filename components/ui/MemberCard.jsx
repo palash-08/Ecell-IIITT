@@ -13,7 +13,7 @@ const MemberCard = ({ member, variant = 'team' }) => {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
         transition={{ duration: 0.3 }}
-        className="bg-white border border-gray-100 rounded-[2.5rem] p-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-2xl transition-all duration-500 group"
+        className="bg-white border border-gray-100 rounded-[2.5rem] p-6 md:p-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-2xl transition-all duration-500 group"
       >
         <div className="flex items-start gap-6 mb-8">
           <div className="w-20 h-20 rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shrink-0 shadow-sm transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105">

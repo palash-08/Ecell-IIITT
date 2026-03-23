@@ -18,8 +18,8 @@ export const metadata = {
   title: "E-Cell IIIT Trichy | Fostering Innovation & Entrepreneurship",
   description: "Entrepreneurship Cell (E-Cell) IIIT Trichy promotes leadership and innovation, providing resources, mentorship, and networking for aspiring entrepreneurs.",
   icons: {
-    icon: "/Ecelllogo.jpeg",
-    apple: "/Ecelllogo.jpeg",
+    icon: "/Ecell-logo.png",
+    apple: "/Ecell-logo.png",
   },
 };
 

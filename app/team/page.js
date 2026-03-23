@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import api from '@/lib/api';
-
-// Import reusable components
 import PageHeader from '@/components/ui/PageHeader';
 import MemberCard from '@/components/ui/MemberCard';
 
@@ -60,7 +58,7 @@ export default function TeamPage() {
             <h2 className="text-3xl font-black text-black mb-12 flex items-center gap-4">
                {cat} <div className="h-1 flex-1 bg-gray-50"></div>
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
               {team.filter(m => m.category === cat).map((member) => (
                 <MemberCard key={member._id} member={member} variant="team" />
               ))}

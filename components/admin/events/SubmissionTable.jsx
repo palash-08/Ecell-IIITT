@@ -7,15 +7,15 @@ const SubmissionTable = ({ registrations }) => {
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-gray-50 border-b border-gray-200">
-              <th className="px-6 py-4 text-sm font-bold text-gray-500 uppercase tracking-wider">Participant</th>
-              <th className="px-6 py-4 text-sm font-bold text-gray-500 uppercase tracking-wider">Registration Date</th>
-              <th className="px-6 py-4 text-sm font-bold text-gray-500 uppercase tracking-wider">Details</th>
+              <th className="px-4 md:px-6 py-4 text-[10px] md:text-sm font-bold text-gray-500 uppercase tracking-wider">Participant</th>
+              <th className="px-4 md:px-6 py-4 text-[10px] md:text-sm font-bold text-gray-500 uppercase tracking-wider">Registration Date</th>
+              <th className="px-4 md:px-6 py-4 text-[10px] md:text-sm font-bold text-gray-500 uppercase tracking-wider">Details</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
             {registrations.map((reg) => (
               <tr key={reg._id} className="hover:bg-gray-50 transition-colors group">
-                <td className="px-6 py-5">
+                <td className="px-4 md:px-6 py-5">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-full bg-[#FFB800]/10 flex items-center justify-center text-[#FFB800] font-bold">
                         {reg.formData['Full Name']?.charAt(0) || 'U'}
@@ -26,13 +26,13 @@ const SubmissionTable = ({ registrations }) => {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-5 text-gray-600 font-medium text-sm">
+                <td className="px-4 md:px-6 py-5 text-gray-600 font-medium text-sm">
                   <div className="flex flex-col">
                     <span className="font-bold">{new Date(reg.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                     <span className="text-[10px] text-gray-400 font-black uppercase tracking-widest">{new Date(reg.createdAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</span>
                   </div>
                 </td>
-                <td className="px-6 py-5">
+                <td className="px-4 md:px-6 py-5">
                   <div className="flex flex-wrap gap-2">
                     {Object.entries(reg.formData).map(([key, value]) => {
                       if (key === 'Full Name' || key === 'Email Address') return null;

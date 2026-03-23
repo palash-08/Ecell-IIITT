@@ -131,7 +131,7 @@ export default function AddTeamMemberPage() {
           <button 
             onClick={handleSubmit}
             disabled={loading}
-            className="flex items-center gap-2 bg-[#FFB800] text-black px-8 py-3 rounded-xl font-bold hover:bg-[#e6a700] transition-all shadow-sm disabled:opacity-50"
+            className="flex items-center gap-2 bg-[#FFB800] text-black px-6 md:px-8 py-3 rounded-xl font-bold hover:bg-[#e6a700] transition-all shadow-sm disabled:opacity-50"
           >
             {loading ? <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div> : <FiSave size={20} />}
             {loading ? 'Saving...' : 'Add Member'}

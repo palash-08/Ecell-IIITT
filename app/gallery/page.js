@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiImage, FiVideo, FiMaximize2, FiX, FiCalendar, FiTag } from 'react-icons/fi';
+import {FiVideo, FiMaximize2, FiX, FiCalendar, FiTag } from 'react-icons/fi';
 import Image from 'next/image';
 import api from '@/lib/api';
 
@@ -11,7 +11,6 @@ export default function GalleryPage() {
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState('All');
     const [selectedMedia, setSelectedMedia] = useState(null);
-
     const categories = ['All', 'Flagship', 'Hackathon', 'Workshop', 'Seminar', 'Other'];
 
     useEffect(() => {
@@ -28,10 +27,7 @@ export default function GalleryPage() {
         fetchGallery();
     }, []);
 
-    const filteredItems = filter === 'All' 
-        ? items 
-        : items.filter(item => item.category === filter);
-
+    const filteredItems = filter === 'All' ? items : items.filter(item => item.category === filter);
     const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001').replace(/\/api$/, '');
 
     return (
@@ -49,7 +45,7 @@ export default function GalleryPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="text-6xl md:text-8xl font-black text-black mb-8 tracking-tighter"
+                    className="text-4xl md:text-8xl font-black text-black mb-8 tracking-tighter"
                 >
                     Our <span className="text-gray-200">Gallery.</span>
                 </motion.h1>
@@ -62,7 +58,6 @@ export default function GalleryPage() {
                     A collection of moments, milestones, and memories from our most iconic events and initiatives.
                 </motion.p>
             </div>
-
             {/* Filter Section */}
             <div className="max-w-7xl mx-auto mb-12 overflow-x-auto">
                 <div className="flex justify-center items-center gap-4 min-w-max pb-4">
@@ -81,7 +76,6 @@ export default function GalleryPage() {
                     ))}
                 </div>
             </div>
-
             {/* Gallery Grid */}
             <div className="max-w-7xl mx-auto">
                 {loading ? (
@@ -144,7 +138,6 @@ export default function GalleryPage() {
                     </div>
                 )}
             </div>
-
             {/* Lightbox / Preview Modal */}
             <AnimatePresence>
                 {selectedMedia && (
@@ -185,11 +178,11 @@ export default function GalleryPage() {
                                         src={`${API_URL}${selectedMedia.url}`}
                                         controls
                                         autoPlay
+                                        muted
                                         className="max-w-full max-h-full"
                                     />
                                 )}
                             </div>
-                            
                             <div className="mt-8 text-center text-white p-4">
                                 <span className="text-[#FFB800] font-black text-xs uppercase tracking-[0.3em] mb-4 block">
                                     {selectedMedia.category} • {new Date(selectedMedia.date).toLocaleDateString()}

@@ -5,8 +5,6 @@ import FeaturedEvents from "@/components/events/FeaturedEvents";
 import GalleryPreview from "@/components/gallery/GalleryPreview";
 import CollaborateSection from "@/components/collaborate/CollaborateSection";
 
-import Link from "next/link";
-import { motion } from "motion/react";
 
 export default function Home() {
   return (

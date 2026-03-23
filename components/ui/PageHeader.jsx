@@ -7,7 +7,7 @@ const PageHeader = ({ title, highlight, description, children }) => {
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFB800] rounded-full blur-[120px] opacity-10 -translate-y-1/2 translate-x-1/2"></div>
       
       <div className="max-w-7xl mx-auto text-center relative z-10">
-        <h1 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">
+        <h1 className="text-4xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">
           {title} <span className="text-[#FFB800]">{highlight}</span>
         </h1>
         {description && (

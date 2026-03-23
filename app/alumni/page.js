@@ -60,7 +60,7 @@ export default function AlumniPage() {
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Search and Filter Bar */}
-        <div className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-between sticky top-20 z-30 bg-white/80 backdrop-blur-md py-4 rounded-3xl border border-gray-100 px-6 shadow-sm">
+        <div className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-between top-[72px] md:top-[80px] z-30 bg-white/80 backdrop-blur-md py-4 md:py-6 rounded-3xl border border-gray-100 px-6 shadow-sm">
             <div className="relative w-full md:max-w-md">
                 <FiSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                 <input 
@@ -68,17 +68,17 @@ export default function AlumniPage() {
                     placeholder="Search by name, role, or company..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-14 pr-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 transition-all font-bold text-black"
+                    className="w-full pl-14 pr-6 py-3.5 md:py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50 transition-all font-bold text-black text-sm md:text-base"
                 />
             </div>
 
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar w-full md:w-auto">
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 no-scrollbar w-full md:w-auto">
                 <FiFilter className="text-gray-400 shrink-0 hidden md:block" size={18} />
                 {batches.map((batch) => (
                     <button
                         key={batch}
                         onClick={() => setSelectedBatch(batch)}
-                        className={`px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest transition-all shrink-0 ${
+                        className={`px-5 md:px-6 py-2 md:py-2.5 rounded-xl font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all shrink-0 ${
                             selectedBatch === batch 
                             ? 'bg-black text-white shadow-lg' 
                             : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
@@ -105,7 +105,7 @@ export default function AlumniPage() {
               </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             {filteredAlumni.map((alum) => (
               <MemberCard key={alum._id} member={alum} variant="alumni" />
             ))}

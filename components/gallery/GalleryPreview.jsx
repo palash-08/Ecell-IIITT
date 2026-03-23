@@ -12,7 +12,7 @@ const GalleryPreview = () => {
     useEffect(() => {
         const fetchGallery = async () => {
             try {
-                const res = await api.get('/gallery?limit=5');
+                const res = await api.get('/gallery?limit=10');
                 setItems(res.data.data);
             } catch (err) {
                 console.error(err);

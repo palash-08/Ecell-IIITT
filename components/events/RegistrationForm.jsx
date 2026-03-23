@@ -2,13 +2,12 @@
 
 import React, { useState } from 'react';
 import { FiCheckCircle, FiAlertCircle, FiLock } from 'react-icons/fi';
-import api, { apiMulti } from '@/lib/api';
+import { apiMulti } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
 import Link from 'next/link';
 
 export default function RegistrationForm({ eventId, schema }) {
   const [formData, setFormData] = useState({});
-  const [files, setFiles] = useState({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
@@ -27,9 +26,7 @@ export default function RegistrationForm({ eventId, schema }) {
     }
   };
 
-  const handleFileChange = (label, file) => {
-    setFiles({ ...files, [label]: file });
-  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,13 +37,6 @@ export default function RegistrationForm({ eventId, schema }) {
       const data = new FormData();
       data.append('eventId', eventId);
       data.append('formData', JSON.stringify(formData));
-      
-      // Append files
-      Object.keys(files).forEach(key => {
-          if (files[key]) {
-              data.append(key, files[key]);
-          }
-      });
 
       await apiMulti.post('/registrations', data);
       setSuccess(true);
@@ -135,17 +125,6 @@ export default function RegistrationForm({ eventId, schema }) {
                     <span className="text-sm font-medium text-gray-600 group-hover:text-black transition-colors">{opt}</span>
                   </label>
                 ))}
-              </div>
-            ) : field.type === 'file' ? (
-              <div className="mt-2">
-                <input
-                  type="file"
-                  required={field.required}
-                  accept={field.fileType || "*/*"}
-                  onChange={(e) => handleFileChange(field.label, e.target.files[0])}
-                  className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-black file:bg-[#FFB800]/10 file:text-[#FFB800] hover:file:bg-[#FFB800]/20 transition-all cursor-pointer"
-                />
-                {field.maxSize && <p className="text-[10px] text-gray-400 mt-1 font-bold">Max size: {field.maxSize}MB</p>}
               </div>
             ) : (
               <input
