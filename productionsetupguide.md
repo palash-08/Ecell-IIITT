@@ -1,120 +1,115 @@
-# Production Setup Guide
+# Production Setup & Deployment Guide 🚀
 
-This guide provides step-by-step instructions for deploying the E-Cell IIIT Trichy website to a production environment.
-
-## Prerequisites
-
-- **Node.js**: v18.x or higher
-- **NPM**: v9.x or higher
-- **MongoDB**: A running instance (local or Atlas)
-- **Nginx**: For reverse proxy and SSL
-- **PM2**: For process management
+This guide provides the technical specifications and steps required to deploy the **E-Cell IIIT Trichy** platform to a production environment.
 
 ---
 
-## 1. Backend Setup
+## 🛠️ Technical Stack & Versions
 
-### Environment Configuration
-Create a `.env` file in the `backend/` directory with the following variables:
+### Frontend
+- **Framework**: Next.js `15.3.5` (App Router)
+- **Library**: React `19.0.0`
+
+### Backend
+- **Runtime**: Node.js `v18.x` or higher (Recommended: `v20.x`)
+- **Framework**: Express.js `^5.2.1`
+- **Database**: MongoDB (Mongoose `^9.3.1`)
+
+---
+
+## ⚙️ Environment Configuration
+
+### 1. Frontend (`.env.local`)
+Create this file in the root directory.
 
 ```env
-# Server Port
+# URL for the Backend API
+NEXT_PUBLIC_API_URL=https://your-api-domain.com/api
+```
+
+### 2. Backend (`.env`)
+Create this file in the `backend/` directory.
+
+```env
+# Server Configuration
+NODE_ENV=production
 PORT=5001
+LOG_RETENTION_DAYS=30d
 
 # MongoDB Connection
-MONGO_URI=mongodb+srv://<db_user>:<db_password>@<db_cluster>/<db_name>
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/ecell_db
 
 # Security
-JWT_SECRET=<strong_random_secret_at_least_32_chars>
+# Generate a strong 64-character secret
+JWT_SECRET=your_super_secret_64_char_key_here
 JWT_EXPIRES_IN=30d
-```
 
-### Installation and Deployment
-1. Navigate to the backend directory: `cd backend`
-2. Install dependencies: `npm install`
-3. Start the server with PM2:
-   ```bash
-   pm2 start server.js --name "ecell-backend"
-   ```
+# Email (SMTP) Configuration
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_EMAIL=your-email@gmail.com
+SMTP_PASSWORD=your-app-specific-password
+FROM_EMAIL=your-email@gmail.com
+FROM_NAME="E-Cell IIIT Trichy"
+```
 
 ---
 
-## 2. Frontend Setup
+## 🚀 Deployment Steps
 
-### Environment Configuration
-Create a `.env.local` file in the root directory:
-
-```env
-# API URL (The URL where your backend is accessible)
-NEXT_PUBLIC_API_URL=https://<api_domain>/api
-```
-
-### Build and Deployment
-1. Navigate to the root directory.
-2. Install dependencies: `npm install`
-3. Build the Next.js application: `npm run build`
-4. Start the frontend with PM2:
+### Step 1: Backend Deployment
+1. Navigate to `/backend`.
+2. Run `npm install --production`.
+3. Use a process manager like **PM2** to keep the server running:
    ```bash
-   pm2 start npm --name "ecell-frontend" -- start
+   pm2 start server.js --name "ecell-api"
    ```
 
----
+### Step 2: Frontend Deployment
+1. Navigate to the root folder.
+2. Run `npm install`.
+3. Run `npm run build`.
+4. Start the production server:
+   ```bash
+   pm2 start npm --name "ecell-web" -- start
+   ```
 
-## 3. Nginx Configuration
-
-Configure Nginx to serve the frontend and proxy API/Upload requests to the backend.
-
+### Step 3: Nginx Reverse Proxy (Example)
 ```nginx
 server {
     listen 80;
-    server_name <your_domain>;
+    server_name ecell.iiitt.ac.in;
 
-    # Frontend
     location / {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
+        proxy_pass http://localhost:3000; # Frontend
         proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
     }
 
-    # Backend API
     location /api {
-        proxy_pass http://localhost:5001;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
+        proxy_pass http://localhost:5001; # Backend API
         proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
     }
 
-    # Static Uploads
     location /uploads {
-        proxy_pass http://localhost:5001/uploads;
-        proxy_set_header Host $host;
-        client_max_body_size 50M;
+        proxy_pass http://localhost:5001/uploads; # Local storage proxy
+        client_max_body_size 30M;
     }
 }
 ```
 
 ---
 
-## 4. Directory Permissions
-
-Ensure the backend has write permissions for the uploads directory.
-
+## 📁 Directory Permissions
+Ensure the backend has write access to the uploads folder:
 ```bash
-# From the backend directory
-mkdir -p uploads/events uploads/team uploads/faculty uploads/gallery
-chmod -R 755 uploads
+chmod -R 755 backend/uploads
 ```
 
 ---
 
-## 5. Security Recommendations
-
-- **SSL**: Use Certbot (Let's Encrypt) to enable HTTPS on Nginx.
-- **Firewall**: Ensure only ports 80, 443, and 22 (SSH) are open to the public.
-- **Database**: Ensure MongoDB is not accessible from the public internet (use IP whitelisting).
-- **Environment Variables**: Never commit `.env` or `.env.local` files to version control.
+## 🔒 Security Checklist
+- [ ] Use HTTPS/SSL (Certbot/Let's Encrypt).
+- [ ] Set `NODE_ENV` to `production`.
+- [ ] Ensure `JWT_SECRET` is unique and rotated.
+- [ ] Limit `client_max_body_size` in Nginx to match app limits (30MB).
