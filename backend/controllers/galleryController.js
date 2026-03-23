@@ -70,6 +70,21 @@ exports.addGalleryItem = async (req, res) => {
         }
 
         const item = await GalleryItem.create(galleryData);
+
+        // Synchronize with Event model if associated
+        if (galleryData.event) {
+            const Event = require('../models/Event');
+            await Event.findByIdAndUpdate(galleryData.event, {
+                $push: { 
+                    galleryImages: { 
+                        url: item.url, 
+                        size: item.size 
+                    } 
+                }
+            });
+            logger.info(`🔗 Synchronized gallery item ${item._id} with event ${galleryData.event}`);
+        }
+
         logger.info(`✅ Successfully added gallery item: ${item._id}`);
         res.status(201).json({ success: true, data: item });
     } catch (error) {
@@ -85,6 +100,15 @@ exports.deleteGalleryItem = async (req, res) => {
         const item = await GalleryItem.findByIdAndDelete(req.params.id);
         if (!item) return res.status(404).json({ success: false, message: 'Item not found' });
         
+        // Remove from associated event if linked
+        if (item.event) {
+            const Event = require('../models/Event');
+            await Event.findByIdAndUpdate(item.event, {
+                $pull: { galleryImages: { url: item.url } }
+            });
+            logger.info(`🔗 Removed gallery item ${item._id} from event ${item.event} synchronization`);
+        }
+
         logger.info(`✅ Successfully deleted gallery item: ${item._id}`);
         res.status(200).json({ success: true, data: {} });
     } catch (error) {

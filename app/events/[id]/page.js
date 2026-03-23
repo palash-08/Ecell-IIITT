@@ -115,51 +115,39 @@ export default function EventDetailPage() {
                 <p className="text-xs font-black text-gray-400 uppercase tracking-widest">Loading Media...</p>
               </div>
             </section>
-          ) : galleryItems && galleryItems.length > 0 && (
-            <section className="mb-16">
-              <h3 className="text-3xl font-black text-black mb-10 flex items-center gap-4">
-                <FiImage className="text-[#FFB800]" /> Event <span className="text-gray-300">Gallery.</span>
-              </h3>
-              <BentoGallery items={galleryItems} />
-            </section>
-          )}
+          ) : (() => {
+            // Merge regular gallery items with event-specific gallery images
+            const mergedMedia = [...galleryItems];
+            
+            // Add event.galleryImages if they aren't already in mergedMedia
+            if (event.galleryImages && event.galleryImages.length > 0) {
+              event.galleryImages.forEach((img, idx) => {
+                const url = typeof img === 'string' ? img : img.url;
+                if (!mergedMedia.some(m => m.url === url)) {
+                  mergedMedia.push({
+                    _id: `event-img-${idx}`,
+                    url: url,
+                    mediaType: url.match(/\.(mp4|webm|ogg|mov)$/i) ? 'video' : 'image',
+                    title: event.title,
+                    category: event.category,
+                    size: img.size || 0
+                  });
+                }
+              });
+            }
 
-          {/* Legacy Gallery images (if any) */}
-          {event.galleryImages && event.galleryImages.length > 0 && galleryItems.length === 0 && (
-            <section className="mb-16">
-              <h3 className="text-2xl font-black text-black mb-8 flex items-center gap-3">
-                <FiImage className="text-[#FFB800]" /> Event Gallery
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {event.galleryImages.map((img, i) => {
-                  const imageUrl = typeof img === 'string' ? img : img.url;
-                  const isVideo = imageUrl.match(/\.(mp4|webm|ogg|mov)$/i);
-                  return (
-                    <div key={i} className="relative aspect-video rounded-3xl overflow-hidden border border-gray-100 group">
-                      {isVideo ? (
-                        <video 
-                          src={`${API_URL}${imageUrl}`} 
-                          className="w-full h-full object-cover" 
-                          controls
-                          muted
-                          loop
-                          preload="metadata"
-                        />
-                      ) : (
-                        <Image 
-                          src={`${API_URL}${imageUrl}`} 
-                          alt="Gallery item" 
-                          fill
-                          unoptimized
-                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
-                        />
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-          )}
+            if (mergedMedia.length > 0) {
+              return (
+                <section className="mb-16">
+                  <h3 className="text-3xl font-black text-black mb-10 flex items-center gap-4">
+                    <FiImage className="text-[#FFB800]" /> Event <span className="text-gray-300">Gallery.</span>
+                  </h3>
+                  <BentoGallery items={mergedMedia} />
+                </section>
+              );
+            }
+            return null;
+          })()}
 
           <EventResourcesSection links={event.externalLinks} />
         </div>
