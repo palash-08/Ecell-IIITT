@@ -1,7 +1,8 @@
 import React from 'react';
 import { FiTrash2, FiVideo, FiGrid } from 'react-icons/fi';
+import { resolveImageUrl } from '@/lib/utils';
 
-export default function GalleryGrid({ items, handleDelete, API_URL }) {
+export default function GalleryGrid({ items, handleDelete }) {
     if (items.length === 0) {
         return (
             <div className="bg-gray-50 border border-gray-100 rounded-[2rem] md:rounded-[3rem] p-10 md:p-20 text-center">
@@ -19,14 +20,14 @@ export default function GalleryGrid({ items, handleDelete, API_URL }) {
                     <div className="aspect-square relative flex items-center justify-center bg-gray-50">
                         {item.mediaType === 'image' ? (
                             <img 
-                                src={`${API_URL}${item.url}`} 
+                                src={resolveImageUrl(item.url)} 
                                 alt={item.title} 
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                             />
                         ) : (
                             <div className="w-full h-full relative">
                                 <video 
-                                    src={`${API_URL}${item.url}`} 
+                                    src={resolveImageUrl(item.url)} 
                                     className="w-full h-full object-cover" 
                                 />
                                 <div className="absolute inset-0 flex items-center justify-center bg-black/20">

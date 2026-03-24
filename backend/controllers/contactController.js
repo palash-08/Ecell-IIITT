@@ -1,12 +1,32 @@
 const ContactMessage = require('../models/ContactMessage');
+const sendEmail = require('../utils/sendEmail');
+const logger = require('../utils/logger');
 
 // @desc    Submit contact message
 // @route   POST /api/contact
+// @access  Public
 exports.submitMessage = async (req, res) => {
     try {
-        const message = await ContactMessage.create(req.body);
-        res.status(201).json({ success: true, data: message });
+        const { name, email, message: text } = req.body;
+        
+        const contactMessage = await ContactMessage.create({ name, email, message: text });
+        
+        // Notify Admin via Email
+        try {
+            await sendEmail({
+                email: process.env.FROM_EMAIL,
+                subject: `New Contact Form Submission: ${name}`,
+                message: `You have a new message from the contact form:\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${text}`
+            });
+            logger.info(`📧 Admin notified of new contact message from ${email}`);
+        } catch (emailErr) {
+            logger.error(`❌ Failed to send admin notification email: ${emailErr.message}`);
+            // We don't return error to user if email fails, as message is already saved
+        }
+
+        res.status(201).json({ success: true, data: contactMessage });
     } catch (error) {
+        logger.error(`❌ Contact form submission failed: ${error.message}`);
         res.status(400).json({ success: false, error: error.message });
     }
 };

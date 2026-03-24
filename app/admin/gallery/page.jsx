@@ -47,10 +47,6 @@ export default function AdminGalleryPage() {
     }
   };
 
-  const API_URL = (
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001"
-  ).replace(/\/api$/, "");
-
   return (
     <div className="space-y-10">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
@@ -80,7 +76,6 @@ export default function AdminGalleryPage() {
         <GalleryGrid
           items={items}
           handleDelete={handleDelete}
-          API_URL={API_URL}
         />
       )}
 

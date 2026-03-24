@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {FiVideo, FiMaximize2, FiX, FiCalendar, FiTag } from 'react-icons/fi';
 import Image from 'next/image';
 import api from '@/lib/api';
+import { resolveImageUrl } from '@/lib/utils';
 
 export default function GalleryPage() {
     const [items, setItems] = useState([]);
@@ -28,7 +29,6 @@ export default function GalleryPage() {
     }, []);
 
     const filteredItems = filter === 'All' ? items : items.filter(item => item.category === filter);
-    const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001').replace(/\/api$/, '');
 
     return (
         <div className="min-h-screen bg-white pt-32 pb-20 px-6">
@@ -102,7 +102,7 @@ export default function GalleryPage() {
                             >
                                 {item.mediaType === 'image' ? (
                                     <Image 
-                                        src={`${API_URL}${item.url}`} 
+                                        src={resolveImageUrl(item.url)} 
                                         alt={item.title}
                                         width={800}
                                         height={600}
@@ -112,7 +112,7 @@ export default function GalleryPage() {
                                 ) : (
                                     <div className="relative group">
                                         <video 
-                                            src={`${API_URL}${item.url}`}
+                                            src={resolveImageUrl(item.url)}
                                             className="w-full h-auto"
                                         />
                                         <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-all">
@@ -166,7 +166,7 @@ export default function GalleryPage() {
                             <div className="bg-black rounded-[3rem] overflow-hidden flex items-center justify-center aspect-video sm:aspect-auto sm:max-h-[80vh]">
                                 {selectedMedia.mediaType === 'image' ? (
                                     <Image 
-                                        src={`${API_URL}${selectedMedia.url}`} 
+                                        src={resolveImageUrl(selectedMedia.url)} 
                                         alt={selectedMedia.title}
                                         width={1200}
                                         height={800}
@@ -175,7 +175,7 @@ export default function GalleryPage() {
                                     />
                                 ) : (
                                     <video 
-                                        src={`${API_URL}${selectedMedia.url}`}
+                                        src={resolveImageUrl(selectedMedia.url)}
                                         controls
                                         autoPlay
                                         muted

@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { FiArrowLeft, FiCalendar, FiMapPin } from "react-icons/fi";
+import { resolveImageUrl } from "@/lib/utils";
 
 const EventDetailHeader = ({ event }) => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
 
   return (
     <div className="bg-black py-24 px-6 relative">
@@ -17,11 +17,7 @@ const EventDetailHeader = ({ event }) => {
         <div className="flex flex-col md:flex-row gap-12 items-start">
           <div className="w-full md:w-1/3 aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
             <img
-              src={
-                event.mainImage
-                  ? `${API_URL}${event.mainImage}`
-                  : "/Ecell-logo.png"
-              }
+              src={resolveImageUrl(event.mainImage)}
               alt={event.title}
               className="w-full h-full object-cover"
             />

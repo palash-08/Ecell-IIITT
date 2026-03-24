@@ -41,7 +41,7 @@ export default function EditTeamMemberPage() {
       try {
         const res = await api.get(`/team/${id}`);
         const data = res.data.data;
-        const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001').replace(/\/api$/, '');
+        const { resolveImageUrl } = await import('@/lib/utils');
 
         setMemberData({
           name: data.name || '',
@@ -53,7 +53,7 @@ export default function EditTeamMemberPage() {
           email: data.email || '',
           formerPosition: data.formerPosition || '',
           image: data.image || null,
-          imagePreview: data.image ? `${API_URL}${data.image}` : null
+          imagePreview: data.image ? resolveImageUrl(data.image) : null
         });
         setLoading(false);
       } catch (err) {

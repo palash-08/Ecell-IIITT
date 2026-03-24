@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { FiLinkedin, FiMail, FiUser, FiBriefcase, FiCheckCircle } from 'react-icons/fi';
+import { resolveImageUrl } from '@/lib/utils';
 
 const MemberCard = ({ member, variant = 'team' }) => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
   if (variant === 'alumni') {
     return (
@@ -18,7 +18,7 @@ const MemberCard = ({ member, variant = 'team' }) => {
         <div className="flex items-start gap-6 mb-8">
           <div className="w-20 h-20 rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shrink-0 shadow-sm transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105">
             {member.image ? (
-              <img src={`${API_URL}${member.image}`} alt={member.name} className="w-full h-full object-cover" />
+              <img src={resolveImageUrl(member.image)} alt={member.name} className="w-full h-full object-cover" />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-gray-300">
                 <FiUser size={32} />
@@ -77,7 +77,7 @@ const MemberCard = ({ member, variant = 'team' }) => {
     >
       <div className="aspect-square rounded-3xl overflow-hidden bg-gray-50 border border-gray-100 mb-6 shadow-sm group-hover:shadow-2xl transition-all duration-500 relative">
         {member.image ? (
-          <img src={`${API_URL}${member.image}`} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+          <img src={resolveImageUrl(member.image)} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-300">
             <FiUser size={80} />

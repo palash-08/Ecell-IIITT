@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { FiPlus, FiEdit2, FiTrash2, FiRefreshCcw, FiUser } from 'react-icons/fi';
 import Link from 'next/link';
 import api from '@/lib/api';
+import { resolveImageUrl } from '@/lib/utils';
 
 export default function AdminTeamPage() {
   const [team, setTeam] = useState([]);
@@ -86,10 +87,10 @@ export default function AdminTeamPage() {
               ) : team.map((member) => (
                 <tr key={member._id} className="hover:bg-gray-50 transition-colors group">
                   <td className="px-4 md:px-6 py-5 flex items-center gap-3 md:gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden flex-shrink-0 border border-gray-100">
-                       {member.image ? (
-                         <img src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001'}${member.image}`} alt={member.name} className="w-full h-full object-cover" />
-                       ) : (
+                      <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden flex-shrink-0 border border-gray-100">
+                        {member.image ? (
+                          <img src={resolveImageUrl(member.image)} alt={member.name} className="w-full h-full object-cover" />
+                        ) : (
                          <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-50">
                             <FiUser size={20} />
                          </div>

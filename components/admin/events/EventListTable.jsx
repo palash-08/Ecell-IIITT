@@ -1,9 +1,9 @@
 import React from 'react';
-import { FiCalendar, FiMapPin, FiUser, FiEdit2, FiTrash2 } from 'react-icons/fi';
 import Link from 'next/link';
+import { FiCalendar, FiMapPin, FiUser, FiEdit2, FiTrash2 } from 'react-icons/fi';
+import { resolveImageUrl } from '@/lib/utils';
 
 const EventListTable = ({ events, onDelete }) => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
@@ -24,7 +24,7 @@ const EventListTable = ({ events, onDelete }) => {
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-10 rounded-lg bg-gray-100 flex-shrink-0 overflow-hidden border border-gray-200">
                       {event.mainImage ? (
-                        <img src={`${API_URL}${event.mainImage}`} alt="" className="w-full h-full object-cover" />
+                        <img src={resolveImageUrl(event.mainImage)} alt="" className="w-full h-full object-cover" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-gray-400">
                           <FiCalendar size={18} />

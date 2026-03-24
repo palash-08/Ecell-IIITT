@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FiActivity, FiArrowRight, FiCalendar, FiMail } from 'react-icons/fi';
+import { resolveImageUrl } from '@/lib/utils';
 
 export default function LiveActivityFeed({ stats }) {
   return (
@@ -26,7 +27,7 @@ export default function LiveActivityFeed({ stats }) {
           <div className="group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gray-50 hover:bg-black rounded-3xl border border-transparent hover:border-black transition-all duration-300">
             <div className="w-full sm:w-20 h-40 sm:h-20 rounded-2xl bg-white overflow-hidden flex-shrink-0 shadow-sm transition-transform group-hover:scale-95">
               {stats.latestEvent.mainImage ? (
-                <img src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001'}${stats.latestEvent.mainImage}`} className="w-full h-full object-cover" alt="" />
+                <img src={resolveImageUrl(stats.latestEvent.mainImage)} className="w-full h-full object-cover" alt="" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-gray-300">
                   <FiCalendar size={24} />

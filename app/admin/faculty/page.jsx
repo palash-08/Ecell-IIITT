@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { FiPlus, FiEdit2, FiTrash2, FiRefreshCcw, FiUser, FiMessageSquare } from 'react-icons/fi';
 import Link from 'next/link';
 import api from '@/lib/api';
+import { resolveImageUrl } from '@/lib/utils';
 
 export default function AdminFacultyPage() {
   const [faculty, setFaculty] = useState([]);
@@ -103,7 +104,7 @@ export default function AdminFacultyPage() {
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100 border border-gray-200 flex-shrink-0">
                           {f.image ? (
-                            <img src={`${(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001').replace(/\/api$/, '')}${f.image}`} alt={f.name} className="w-full h-full object-cover" />
+                            <img src={resolveImageUrl(f.image)} alt={f.name} className="w-full h-full object-cover" />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center text-gray-300">
                               <FiUser size={20} />

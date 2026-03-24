@@ -7,6 +7,7 @@ import { FiCalendar, FiMapPin, FiFileText, FiX, FiCheckCircle, FiChevronRight, F
 import Link from 'next/link';
 import ProtectedRoute from '@/components/auth/ProtectedRoute';
 import { motion, AnimatePresence } from 'motion/react';
+import { resolveImageUrl } from '@/lib/utils';
 
 export default function MyRegistrationsPage() {
     const [registrations, setRegistrations] = useState([]);
@@ -36,7 +37,7 @@ export default function MyRegistrationsPage() {
                     <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">{key}</p>
                     {isFile ? (
                         <a 
-                            href={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001'}${value}`} 
+                            href={resolveImageUrl(value)} 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="text-[#FFB800] font-bold text-sm hover:underline flex items-center gap-2"

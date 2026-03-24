@@ -86,7 +86,6 @@ export default function EventDetailPage() {
     );
   }
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
   return (
     <div className="min-h-screen bg-white pt-[80px]"> 

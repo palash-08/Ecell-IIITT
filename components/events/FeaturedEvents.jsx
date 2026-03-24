@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import api from "@/lib/api";
-import { FiCalendar, FiArrowRight } from "react-icons/fi";
+import { resolveImageUrl } from "@/lib/utils";
+import { FiArrowRight, FiCalendar } from "react-icons/fi";
 
 const FeaturedEvents = () => {
   const [events, setEvents] = useState([]);
@@ -26,10 +27,6 @@ const FeaturedEvents = () => {
     };
     fetchEvents();
   }, []);
-
-  const API_URL = (
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001"
-  ).replace(/\/api$/, "");
 
   if (loading || events.length === 0) return null;
 
@@ -65,11 +62,7 @@ const FeaturedEvents = () => {
             >
               <div className="absolute inset-0 z-0 h-1/2 sm:h-3/5">
                 <img
-                  src={
-                    event.mainImage
-                      ? `${API_URL}${event.mainImage}`
-                      : "/Ecell-logo.png"
-                  }
+                  src={resolveImageUrl(event.mainImage)}
                   alt={event.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />

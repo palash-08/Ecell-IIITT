@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const connectDB = require('./config/db');
@@ -11,16 +13,41 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB
 connectDB();
 
-// Middleware
+// --- Security Middleware ---
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    crossOriginEmbedderPolicy: false,
+    contentSecurityPolicy: false,
+})); // Set security HTTP headers with cross-origin allowed for media
+
+// General Rate Limiting
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: { success: false, error: 'Too many requests from this IP, please try again after 15 minutes' }
+});
+app.use('/api', limiter);
+
+// Stricter Rate Limiting for Auth (Login/Register)
+const authLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000, // 1 hour
+    max: 20, // limit each IP to 20 requests per hour
+    message: { success: false, error: 'Too many auth attempts from this IP, please try again after an hour' }
+});
+app.use('/api/auth', authLimiter);
+
+// --- Standard Middleware ---
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+    origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ['http://localhost:3000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/uploads', express.static('uploads')); // Serve uploaded images statically
+
+// Serve uploaded images statically - Ensure CORS applies here
+app.use('/uploads', cors(), express.static('uploads')); 
 
 // Request tracking middleware to verify frontend connectivity
 app.use((req, res, next) => {

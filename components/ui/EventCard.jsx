@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { FiCalendar, FiMapPin, FiArrowRight, FiClock } from "react-icons/fi";
+import { resolveImageUrl } from "@/lib/utils";
 
 const EventCard = ({ event }) => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
 
   const eventDate = new Date(event.date);
   eventDate.setHours(0, 0, 0, 0);
@@ -19,9 +19,7 @@ const EventCard = ({ event }) => {
     >
       <div className="relative h-64 overflow-hidden">
         <img
-          src={
-            event.mainImage ? `${API_URL}${event.mainImage}` : "/Ecell-logo.png"
-          }
+          src={resolveImageUrl(event.mainImage)}
           alt={event.title}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />

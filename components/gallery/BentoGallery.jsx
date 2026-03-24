@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMaximize2, FiVideo, FiX } from 'react-icons/fi';
+import { resolveImageUrl } from '@/lib/utils';
 
 const BentoGallery = ({ items = [], onSelect }) => {
     const [selectedMedia, setSelectedMedia] = useState(null);
-    const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001').replace(/\/api$/, '');
 
     const handleSelect = (item) => {
         if (onSelect) {
@@ -47,12 +47,12 @@ const BentoGallery = ({ items = [], onSelect }) => {
                         {item.mediaType === 'image' ? (
                             <div className="w-full h-full relative overflow-hidden">
                                 <img 
-                                    src={`${API_URL}${item.url}`} 
+                                    src={resolveImageUrl(item.url)} 
                                     alt=""
                                     className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-110"
                                 />
                                 <img 
-                                    src={`${API_URL}${item.url}`} 
+                                    src={resolveImageUrl(item.url)} 
                                     alt={item.title}
                                     className="relative w-full h-full object-contain transition-transform duration-700 md:group-hover:scale-105 opacity-90 group-hover:opacity-100 p-2 md:p-4"
                                 />
@@ -60,13 +60,13 @@ const BentoGallery = ({ items = [], onSelect }) => {
                         ) : (
                             <div className="w-full h-full relative overflow-hidden flex items-center justify-center">
                                 <video 
-                                    src={`${API_URL}${item.url}`} 
+                                    src={resolveImageUrl(item.url)} 
                                     className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-20 scale-110"
                                     muted
                                     preload="metadata"
                                 />
                                 <video 
-                                    src={`${API_URL}${item.url}`} 
+                                    src={resolveImageUrl(item.url)} 
                                     className="relative w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity"
                                     muted
                                     preload="metadata"
@@ -125,12 +125,12 @@ const BentoGallery = ({ items = [], onSelect }) => {
                                 {selectedMedia.mediaType === 'image' ? (
                                     <>
                                         <img 
-                                            src={`${API_URL}${selectedMedia.url}`} 
+                                            src={resolveImageUrl(selectedMedia.url)} 
                                             alt=""
                                             className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-30"
                                         />
                                         <img 
-                                            src={`${API_URL}${selectedMedia.url}`} 
+                                            src={resolveImageUrl(selectedMedia.url)} 
                                             alt={selectedMedia.title}
                                             className="relative max-w-full max-h-[70vh] object-contain shadow-2xl p-4"
                                         />
@@ -138,11 +138,11 @@ const BentoGallery = ({ items = [], onSelect }) => {
                                 ) : (
                                     <>
                                         <video 
-                                            src={`${API_URL}${selectedMedia.url}`} 
+                                            src={resolveImageUrl(selectedMedia.url)} 
                                             className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-30"
                                         />
                                         <video 
-                                            src={`${API_URL}${selectedMedia.url}`}
+                                            src={resolveImageUrl(selectedMedia.url)}
                                             controls
                                             autoPlay
                                             className="relative max-w-full max-h-[70vh] object-contain shadow-2xl"

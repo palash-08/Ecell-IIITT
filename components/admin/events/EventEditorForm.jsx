@@ -61,8 +61,7 @@ export default function EventEditorForm({ mode = 'create', eventId = null }) {
         try {
           const res = await api.get(`/events/${eventId}`);
           const data = res.data.data;
-          
-          const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
+          const { resolveImageUrl } = await import('@/lib/utils');
 
           setEventDetails({
             title: data.title || '',
@@ -73,13 +72,13 @@ export default function EventEditorForm({ mode = 'create', eventId = null }) {
             endTime: data.endTime || '',
             description: data.description || '',
             mainImage: data.mainImage || null,
-            imagePreview: data.mainImage ? `${API_URL}${data.mainImage}` : null,
+            imagePreview: data.mainImage ? resolveImageUrl(data.mainImage) : null,
             galleryImages: [], 
             existingGallery: (data.galleryImages || []).map(img => typeof img === 'string' ? img : img.url),
             galleryPreviews: (data.galleryImages || []).map(img => {
               const url = typeof img === 'string' ? img : img.url;
               return {
-                url: `${API_URL}${url}`,
+                url: resolveImageUrl(url),
                 type: url.match(/\.(mp4|webm|ogg|mov)$/i) ? 'video' : 'image',
                 isExisting: true,
                 path: url

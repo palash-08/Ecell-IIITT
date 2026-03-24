@@ -31,7 +31,7 @@ export default function FacultyEditorForm({ mode = 'create', facultyId = null })
         try {
           const res = await api.get(`/faculty/${facultyId}`);
           const data = res.data.data;
-          const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001').replace(/\/api$/, '');
+          const { resolveImageUrl } = await import('@/lib/utils');
 
           setFormData({
             name: data.name || '',
@@ -40,7 +40,7 @@ export default function FacultyEditorForm({ mode = 'create', facultyId = null })
             email: data.email || '',
             linkedin: data.linkedin || '',
             image: data.image || null,
-            imagePreview: data.image ? `${API_URL}${data.image}` : null
+            imagePreview: data.image ? resolveImageUrl(data.image) : null
           });
           setLoading(false);
         } catch (err) {

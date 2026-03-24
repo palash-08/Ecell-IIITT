@@ -5,6 +5,7 @@ import AboutSection from "@/components/about-section/AboutSection";
 import VisionMission from "@/components/vision-mission/VisionMission";
 import { FaQuoteLeft } from "react-icons/fa";
 import { FiLinkedin, FiMail } from "react-icons/fi";
+import { resolveImageUrl } from "@/lib/utils";
 import api from "@/lib/api";
 
 const Page = () => {
@@ -58,11 +59,7 @@ const Page = () => {
                 >
                   <div className="relative w-48 h-48 md:w-64 md:h-64 flex-shrink-0">
                     <img
-                      src={
-                        f.image
-                          ? `${(process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001").replace(/\/api$/, "")}${f.image}`
-                          : "/Ecell-logo.png"
-                      }
+                      src={resolveImageUrl(f.image)}
                       alt={f.name}
                       className="w-full h-full object-cover rounded-full border-4 border-white shadow-xl"
                     />
