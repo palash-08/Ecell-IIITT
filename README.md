@@ -87,12 +87,5 @@ NEXT_PUBLIC_API_URL=http://localhost:5001/api
 
 ---
 
-## 👨‍💻 Contributing
-
-We welcome contributions! Please follow our coding standards and ensure all UI changes are verified for responsiveness across multiple viewports.
-
----
-
-## 📄 License
-
-This project is maintained by E-Cell IIIT Trichy. All rights reserved.
+## 👨‍💻 Production Setup Guide
+Please refer to the [Production Setup Guide](productionsetupguide.md) for more information.
