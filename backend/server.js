@@ -8,6 +8,9 @@ const connectDB = require('./config/db');
 const logger = require('./utils/logger');
 
 const app = express();
+if (process.env.TRUST_PROXY === 'true') {
+    app.set('trust proxy', Number(process.env.PROXY_HOPS));
+}
 const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
