@@ -43,6 +43,8 @@ Create this file in the `backend/` directory.
 NODE_ENV=production
 PORT=5001
 LOG_RETENTION_DAYS=30d
+TRUST_PROXY=false
+PROXY_HOPS=1
 
 # CORS Configuration
 # Comma-separated list of allowed frontend domains
